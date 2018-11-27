@@ -35,5 +35,8 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/ierhyna/oriolo-blog"
+  },
+  "engines": {
+    "node" : ">=10.13.0"
   }
 }
