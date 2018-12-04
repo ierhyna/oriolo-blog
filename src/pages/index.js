@@ -1,22 +1,16 @@
 import React, { Component } from 'react'
-import { Link, graphql } from 'gatsby'
+import { graphql } from 'gatsby'
 
 import Layout from '../components/layout'
+import BlogPosts from '../components/blog'
 
 class IndexPage extends Component {
   render() {
-    const data = this.props.data
+    console.log(this.props)
     return (
       <Layout>
-        <h1>Posts</h1>
-        {data.allWordpressPost.edges.map(({ node }) => (
-          <div key={node.slug}>
-            <Link to={node.slug} css={{ textDecoration: 'none' }}>
-              <h3>{node.title}</h3>
-            </Link>
-            <div dangerouslySetInnerHTML={{ __html: node.excerpt }} />
-          </div>
-        ))}
+        <h1>Recent Blog Posts</h1>
+        <BlogPosts posts={this.props.data.allWordpressPost.edges} />
       </Layout>
     )
   }
@@ -26,18 +20,7 @@ export default IndexPage
 
 export const pageQuery = graphql`
   query {
-    allWordpressPage {
-      edges {
-        node {
-          id
-          title
-          excerpt
-          slug
-          date(formatString: "MMMM DD, YYYY")
-        }
-      }
-    }
-    allWordpressPost(sort: { fields: [date], order: DESC }) {
+    allWordpressPost(sort: { fields: [date], order: DESC }, limit: 5) {
       edges {
         node {
           title
