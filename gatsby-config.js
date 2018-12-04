@@ -1,6 +1,16 @@
 module.exports = {
   siteMetadata: {
     title: 'Blog',
+    menuLinks: [
+      {
+        name: 'Об авторе',
+        link: '/about',
+      },
+      {
+        name: 'Контакты',
+        link: '/contacts',
+      },
+    ],
   },
   plugins: [
     'gatsby-plugin-react-helmet',
@@ -13,6 +23,7 @@ module.exports = {
     },
     'gatsby-transformer-sharp',
     'gatsby-plugin-sharp',
+    'gatsby-plugin-typography',
     // {
     //   resolve: 'gatsby-plugin-manifest',
     //   options: {
