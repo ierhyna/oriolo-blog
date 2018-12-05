@@ -3,6 +3,10 @@ module.exports = {
     title: 'Blog',
     menuLinks: [
       {
+        name: 'Блог',
+        link: '/blog',
+      },
+      {
         name: 'Об авторе',
         link: '/about',
       },
