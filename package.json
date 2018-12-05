@@ -5,6 +5,7 @@
   "author": "Irina Sokolovskaja <sokolovskaja.irina@gmail.com>",
   "private": true,
   "dependencies": {
+    "disqus-react": "^1.0.5",
     "gatsby": "^2.0.19",
     "gatsby-image": "^2.0.15",
     "gatsby-plugin-manifest": "^2.0.5",

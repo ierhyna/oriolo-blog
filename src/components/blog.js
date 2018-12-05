@@ -6,7 +6,7 @@ class BlogPosts extends Component {
     const { posts } = this.props
     return posts.map(({ node }) => (
       <div key={node.slug}>
-        <Link to={node.slug} css={{ textDecoration: 'none' }}>
+        <Link to={`${node.slug}`} css={{ textDecoration: 'none' }}>
           <h3>{node.title}</h3>
         </Link>
         <div dangerouslySetInnerHTML={{ __html: node.excerpt }} />

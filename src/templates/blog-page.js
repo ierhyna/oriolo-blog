@@ -77,6 +77,15 @@ export const pageQuery = graphql`
           title
           excerpt
           slug
+          date
+          categories {
+            name
+            slug
+          }
+          series {
+            name
+            slug
+          }
         }
       }
     }
