@@ -5,7 +5,7 @@ import Layout from '../components/layout'
 import BlogPosts from '../components/blog'
 
 class BlogPage extends Component {
-  render() {
+  render () {
     const { currentPage, numPages } = this.props.pageContext
     const isFirst = currentPage === 1
     const isLast = currentPage === numPages

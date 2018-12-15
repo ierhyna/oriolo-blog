@@ -5,7 +5,7 @@ import Layout from '../components/layout'
 import { DiscussionEmbed } from 'disqus-react'
 
 class PostTemplate extends Component {
-  render() {
+  render () {
     const post = this.props.data.wordpressPost
 
     return (

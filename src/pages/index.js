@@ -6,7 +6,7 @@ import Date from '../components/date'
 import Layout from '../components/layout'
 
 class IndexPage extends Component {
-  render() {
+  render () {
     return (
       <Layout>
         <section>

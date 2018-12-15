@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import Layout from '../components/layout'
 
 class PageTemplate extends Component {
-  render() {
+  render () {
     const category = this.props.data.wordpressCategory
 
     return (
