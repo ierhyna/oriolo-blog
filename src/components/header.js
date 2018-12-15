@@ -2,9 +2,9 @@ import React from 'react'
 import { Link } from 'gatsby'
 
 const Header = ({ siteTitle, menuLinks }) => (
-  <div
+  <header
     style={{
-      background: 'rebeccapurple',
+      background: '#dc6005',
       marginBottom: '1.45rem',
     }}
   >
@@ -26,15 +26,21 @@ const Header = ({ siteTitle, menuLinks }) => (
           {siteTitle}
         </Link>
       </h1>
-      <nav style={{ display: 'flex', flex: 1 }}>
-        {menuLinks.map(link => (
-          <li key={link.name} style={{ listStyleType: 'none' }}>
-            <Link to={link.link}>{link.name}</Link>
-          </li>
-        ))}
+      <nav style={{ marginTop: '0.5rem' }}>
+        <ul
+          style={{ display: 'flex', flex: 1, listStyleType: 'none', margin: 0 }}
+        >
+          {menuLinks.map(link => (
+            <li key={link.name} style={{ margin: '0 1rem 0 0' }}>
+              <Link to={link.link} style={{ textDecoration: 'none' }}>
+                {link.name}
+              </Link>
+            </li>
+          ))}
+        </ul>
       </nav>
     </div>
-  </div>
+  </header>
 )
 
 export default Header

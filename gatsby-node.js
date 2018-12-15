@@ -110,5 +110,41 @@ exports.createPages = ({ graphql, actions }) => {
     })
   })
 
-  return Promise.all([getPages, getPosts])
+  const getCategories = new Promise((resolve, reject) => {
+    graphql(
+      `
+        {
+          allWordpressCategory {
+            edges {
+              node {
+                id
+                slug
+                name
+              }
+            }
+          }
+        }
+      `
+    ).then(result => {
+      if (result.errors) {
+        console.log(result.errors)
+        reject(result.errors)
+      }
+
+      const template = path.resolve('./src/templates/taxonomy.js')
+      result.data.allWordpressCategory.edges.forEach(edge => {
+        createPage({
+          path: `/category/${edge.node.slug}`,
+          component: slash(template),
+          context: {
+            id: edge.node.id,
+          },
+        })
+      })
+
+      resolve()
+    })
+  })
+
+  return Promise.all([getPages, getPosts, getCategories])
 }

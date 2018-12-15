@@ -1,19 +1,45 @@
 import React, { Component } from 'react'
-import { graphql } from 'gatsby'
+import PropTypes from 'prop-types'
+import { graphql, Link } from 'gatsby'
+import Date from '../components/date'
 
 import Layout from '../components/layout'
-import BlogPosts from '../components/blog'
 
 class IndexPage extends Component {
   render() {
-    console.log(this.props)
     return (
       <Layout>
-        <h1>Recent Blog Posts</h1>
-        <BlogPosts posts={this.props.data.allWordpressPost.edges} />
+        <section>
+          <h1>Последние заметки</h1>
+
+          <ul style={{ listStyleType: 'none', marginLeft: 0 }}>
+            {this.props.data.allWordpressPost.edges.map(({ node }) => (
+              <li key={node.slug}>
+                <Date dateString={node.date} format={'L'} /> —&nbsp;
+                <Link to={`${node.slug}`} style={{ textDecoration: 'none' }}>
+                  {node.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </section>
       </Layout>
     )
   }
+}
+
+IndexPage.proptypes = {
+  data: {
+    allWordpressPost: {
+      edges: {
+        node: {
+          title: PropTypes.string,
+          slug: PropTypes.string,
+          date: PropTypes.date,
+        },
+      },
+    },
+  },
 }
 
 export default IndexPage
@@ -24,7 +50,6 @@ export const pageQuery = graphql`
       edges {
         node {
           title
-          excerpt
           slug
           date
         }
