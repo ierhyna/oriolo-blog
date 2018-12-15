@@ -7,7 +7,7 @@ module.exports = {
         link: '/blog',
       },
       {
-        name: 'Об авторе',
+        name: 'Обо мне',
         link: '/about',
       },
       {
