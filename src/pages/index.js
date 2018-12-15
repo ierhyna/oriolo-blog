@@ -10,7 +10,12 @@ class IndexPage extends Component {
     return (
       <Layout>
         <section>
-          <h1>Последние заметки</h1>
+          <h1>
+            Последние заметки{' '}
+            <small>
+              (<Link to={'/blog'}>читать все</Link>)
+            </small>
+          </h1>
 
           <ul style={{ listStyleType: 'none', marginLeft: 0 }}>
             {this.props.data.allWordpressPost.edges.map(({ node }) => (
@@ -19,6 +24,25 @@ class IndexPage extends Component {
                 <Link to={`${node.slug}`} style={{ textDecoration: 'none' }}>
                   {node.title}
                 </Link>
+              </li>
+            ))}
+          </ul>
+        </section>
+
+        <section>
+          <h1>Opensource-проекты</h1>
+
+          <ul>
+            {this.props.data.allMarkdownRemark.edges.map(({ node }) => (
+              <li key={node.frontmatter.title}>
+                {node.frontmatter.prefix} «
+                <a
+                  href={`${node.frontmatter.link}`}
+                  style={{ textDecoration: 'none' }}
+                >
+                  {node.frontmatter.title}
+                </a>
+                » — {node.frontmatter.description}
               </li>
             ))}
           </ul>
@@ -39,6 +63,19 @@ IndexPage.proptypes = {
         },
       },
     },
+    allMarkdownRemark: {
+      edges: {
+        node: {
+          frontmatter: {
+            title: PropTypes.string,
+            prefix: PropTypes.string,
+            link: PropTypes.string,
+            icon: PropTypes.string,
+            description: PropTypes.string,
+          },
+        },
+      },
+    },
   },
 }
 
@@ -52,6 +89,19 @@ export const pageQuery = graphql`
           title
           slug
           date
+        }
+      }
+    }
+    allMarkdownRemark(sort: { fields: [frontmatter___order], order: ASC }) {
+      edges {
+        node {
+          frontmatter {
+            title
+            prefix
+            link
+            icon
+            description
+          }
         }
       }
     }

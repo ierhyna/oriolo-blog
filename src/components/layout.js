@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
 import { StaticQuery, graphql } from 'gatsby'
+import moment from 'moment'
 
 import Header from './header'
 import './layout.css'
@@ -46,6 +47,9 @@ const Layout = ({ children }) => (
         >
           {children}
         </main>
+        <footer>
+          © Ирина Соколовская, <time dateTime={'2012'}>2012</time>—<time dateTime={moment().format('YYYY')}>{moment().format('YYYY')}</time>
+        </footer>
       </>
     )}
   />
