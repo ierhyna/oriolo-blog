@@ -1,6 +1,6 @@
 module.exports = {
   siteMetadata: {
-    title: 'Blog',
+    title: 'Ирина Соколовская',
     menuLinks: [
       {
         name: 'Блог',
@@ -28,18 +28,18 @@ module.exports = {
     'gatsby-transformer-sharp',
     'gatsby-plugin-sharp',
     'gatsby-plugin-typography',
-    // {
-    //   resolve: 'gatsby-plugin-manifest',
-    //   options: {
-    //     name: 'Blog',
-    //     short_name: 'Blog',
-    //     start_url: '/',
-    //     background_color: '#979797',
-    //     theme_color: '#663399',
-    //     display: 'minimal-ui',
-    //     icon: '', // This path is relative to the root of the site.
-    //   },
-    // },
+    {
+      resolve: 'gatsby-plugin-manifest',
+      options: {
+        name: 'Ирина Соколовская',
+        short_name: 'Ирина Соколовская',
+        start_url: '/',
+        background_color: '#ffffff',
+        theme_color: '#dc6005',
+        display: 'minimal-ui',
+        icon: 'src/images/icon-192x192.png',
+      },
+    },
     {
       resolve: 'gatsby-source-wordpress',
       options: {

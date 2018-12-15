@@ -6,7 +6,6 @@ import BlogPosts from '../components/blog'
 
 class BlogPage extends Component {
   render() {
-    console.log(this.props)
     const { currentPage, numPages } = this.props.pageContext
     const isFirst = currentPage === 1
     const isLast = currentPage === numPages
