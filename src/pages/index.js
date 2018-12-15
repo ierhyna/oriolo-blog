@@ -53,30 +53,30 @@ class IndexPage extends Component {
 }
 
 IndexPage.proptypes = {
-  data: {
-    allWordpressPost: {
-      edges: {
-        node: {
+  data: PropTypes.shape({
+    allWordpressPost: PropTypes.shape({
+      edges: PropTypes.shape({
+        node: PropTypes.shape({
           title: PropTypes.string,
           slug: PropTypes.string,
           date: PropTypes.date,
-        },
-      },
-    },
-    allMarkdownRemark: {
-      edges: {
-        node: {
-          frontmatter: {
+        }).isRequired,
+      }).isRequired,
+    }).isRequired,
+    allMarkdownRemark: PropTypes.shape({
+      edges: PropTypes.shape({
+        node: PropTypes.shape({
+          frontmatter: PropTypes.shape({
             title: PropTypes.string,
             prefix: PropTypes.string,
             link: PropTypes.string,
             icon: PropTypes.string,
             description: PropTypes.string,
-          },
-        },
-      },
-    },
-  },
+          }).isRequired,
+        }).isRequired,
+      }).isRequired,
+    }).isRequired,
+  }).isRequired,
 }
 
 export default IndexPage
