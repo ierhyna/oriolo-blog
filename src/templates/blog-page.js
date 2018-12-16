@@ -1,12 +1,14 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import { Link, graphql } from 'gatsby'
 
-import Layout from '../components/layout'
-import BlogPosts from '../components/blog'
+import Layout from '../components/Layout'
+import BlogPosts from '../components/Blog'
 
 class BlogPage extends Component {
   render () {
     const { currentPage, numPages } = this.props.pageContext
+    const { edges: posts } = this.props.data.allWordpressPost
     const isFirst = currentPage === 1
     const isLast = currentPage === numPages
     const prevPage =
@@ -15,7 +17,7 @@ class BlogPage extends Component {
 
     return (
       <Layout>
-        <BlogPosts posts={this.props.data.allWordpressPost.edges} />
+        <BlogPosts posts={posts} />
 
         <ul
           style={{
@@ -64,8 +66,26 @@ class BlogPage extends Component {
 
 export default BlogPage
 
-export const pageQuery = graphql`
-  query($skip: Int!, $limit: Int!) {
+BlogPage.propTypes = {
+  pageContext: PropTypes.shape({
+    currentPage: PropTypes.number.isRequired,
+    numPages: PropTypes.number.isRequired,
+  }).isRequired,
+  data: PropTypes.shape({
+    allWordpressPost: PropTypes.shape({
+      edges: PropTypes.arrayOf(PropTypes.shape({
+        node: PropTypes.shape({
+          title: PropTypes.string,
+          slug: PropTypes.string,
+          date: PropTypes.date,
+        }).isRequired,
+      })).isRequired,
+    }).isRequired,
+  }).isRequired,
+}
+
+export const query = graphql`
+  query BlogPageQuery($skip: Int!, $limit: Int!) {
     allWordpressPost(
       sort: { fields: [date], order: DESC }
       limit: $limit

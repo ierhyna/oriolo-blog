@@ -1,12 +1,17 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { graphql, Link } from 'gatsby'
-import Date from '../components/date'
+import Date from '../components/Date'
 
-import Layout from '../components/layout'
+import Layout from '../components/Layout'
 
 class IndexPage extends Component {
   render () {
+    const {
+      allWordpressPost: posts,
+      allMarkdownRemark: projects
+    } = this.props.data
+
     return (
       <Layout>
         <section>
@@ -18,7 +23,7 @@ class IndexPage extends Component {
           </h1>
 
           <ul style={{ listStyleType: 'none', marginLeft: 0 }}>
-            {this.props.data.allWordpressPost.edges.map(({ node }) => (
+            {posts.edges.map(({ node }) => (
               <li key={node.slug}>
                 <Date dateString={node.date} format={'L'} /> —&nbsp;
                 <Link to={`${node.slug}`} style={{ textDecoration: 'none' }}>
@@ -33,7 +38,7 @@ class IndexPage extends Component {
           <h1>Opensource-проекты</h1>
 
           <ul>
-            {this.props.data.allMarkdownRemark.edges.map(({ node }) => (
+            {projects.edges.map(({ node }) => (
               <li key={node.frontmatter.title}>
                 {node.frontmatter.prefix} «
                 <a
@@ -52,19 +57,19 @@ class IndexPage extends Component {
   }
 }
 
-IndexPage.proptypes = {
+IndexPage.propTypes = {
   data: PropTypes.shape({
     allWordpressPost: PropTypes.shape({
-      edges: PropTypes.shape({
+      edges: PropTypes.arrayOf(PropTypes.shape({
         node: PropTypes.shape({
           title: PropTypes.string,
           slug: PropTypes.string,
           date: PropTypes.date,
         }).isRequired,
-      }).isRequired,
+      })).isRequired,
     }).isRequired,
     allMarkdownRemark: PropTypes.shape({
-      edges: PropTypes.shape({
+      edges: PropTypes.arrayOf(PropTypes.shape({
         node: PropTypes.shape({
           frontmatter: PropTypes.shape({
             title: PropTypes.string,
@@ -74,15 +79,15 @@ IndexPage.proptypes = {
             description: PropTypes.string,
           }).isRequired,
         }).isRequired,
-      }).isRequired,
+      })).isRequired,
     }).isRequired,
   }).isRequired,
 }
 
 export default IndexPage
 
-export const pageQuery = graphql`
-  query {
+export const query = graphql`
+  query IndexPageQuery {
     allWordpressPost(sort: { fields: [date], order: DESC }, limit: 5) {
       edges {
         node {
