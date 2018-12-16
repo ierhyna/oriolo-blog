@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
 import { graphql } from 'gatsby'
 import PropTypes from 'prop-types'
-import Layout from '../components/layout'
+import Layout from '../components/Layout'
 import { DiscussionEmbed } from 'disqus-react'
 
 class PostTemplate extends Component {
   render () {
-    const post = this.props.data.wordpressPost
+    const { wordpressPost: post } = this.props.data
 
     return (
       <Layout>
@@ -27,18 +27,25 @@ class PostTemplate extends Component {
 }
 
 PostTemplate.propTypes = {
-  data: PropTypes.object.isRequired,
-  edges: PropTypes.array,
+  data: PropTypes.shape({
+    wordpressPost: PropTypes.shape({
+      title: PropTypes.string.isRequired,
+      slug: PropTypes.string.isRequired,
+      date: PropTypes.string.isRequired,
+      content: PropTypes.string.isRequired,
+    }).isRequired,
+  }).isRequired,
 }
 
 export default PostTemplate
 
-export const pageQuery = graphql`
-  query($id: String!) {
+export const query = graphql`
+  query PostQuery($id: String!) {
     wordpressPost(id: { eq: $id }) {
       title
-      content
+      slug
       date
+      content
       categories {
         name
         slug
@@ -46,11 +53,6 @@ export const pageQuery = graphql`
       series {
         name
         slug
-      }
-    }
-    site {
-      siteMetadata {
-        title
       }
     }
   }

@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
 import { graphql } from 'gatsby'
 import PropTypes from 'prop-types'
-import Layout from '../components/layout'
+import Layout from '../components/Layout'
 
 class PageTemplate extends Component {
   render () {
-    const page = this.props.data.wordpressPage
+    const { wordpressPage: page } = this.props.data
 
     return (
       <Layout>
@@ -17,22 +17,21 @@ class PageTemplate extends Component {
 }
 
 PageTemplate.propTypes = {
-  data: PropTypes.object.isRequired,
-  edges: PropTypes.array,
+  data: PropTypes.shape({
+    wordpressPage: PropTypes.shape({
+      title: PropTypes.string.isRequired,
+      content: PropTypes.string.isRequired,
+    }).isRequired,
+  }).isRequired,
 }
 
 export default PageTemplate
 
-export const pageQuery = graphql`
-  query($id: String!) {
+export const query = graphql`
+  query PageQuery($id: String!) {
     wordpressPage(id: { eq: $id }) {
       title
       content
-    }
-    site {
-      siteMetadata {
-        title
-      }
     }
   }
 `

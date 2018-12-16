@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { graphql } from 'gatsby'
 import PropTypes from 'prop-types'
-import Layout from '../components/layout'
+import Layout from '../components/Layout'
 
 class PageTemplate extends Component {
   render () {
@@ -16,14 +16,17 @@ class PageTemplate extends Component {
 }
 
 PageTemplate.propTypes = {
-  data: PropTypes.object.isRequired,
-  edges: PropTypes.array,
+  data: PropTypes.shape({
+    wordpressCategory: PropTypes.shape({
+      name: PropTypes.string.isRequired,
+    }).isRequired,
+  }).isRequired,
 }
 
 export default PageTemplate
 
-export const pageQuery = graphql`
-  query($id: String!) {
+export const query = graphql`
+  query TaxonomyQuery($id: String!) {
     wordpressCategory(id: { eq: $id }) {
       name
     }
