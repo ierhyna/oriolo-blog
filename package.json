@@ -5,23 +5,23 @@
   "author": "Irina Sokolovskaja <sokolovskaja.irina@gmail.com>",
   "private": true,
   "dependencies": {
-    "disqus-react": "^1.0.5",
-    "gatsby": "^2.0.19",
-    "gatsby-image": "^2.0.15",
-    "gatsby-plugin-manifest": "^2.0.5",
-    "gatsby-plugin-offline": "^2.0.11",
-    "gatsby-plugin-react-helmet": "^3.0.0",
-    "gatsby-plugin-sharp": "^2.0.7",
-    "gatsby-plugin-typography": "^2.2.2",
-    "gatsby-source-filesystem": "^2.0.12",
-    "gatsby-source-wordpress": "^3.0.14",
-    "gatsby-transformer-remark": "^2.1.15",
-    "gatsby-transformer-sharp": "^2.1.4",
-    "react": "^16.5.1",
-    "react-dom": "^16.5.1",
-    "react-helmet": "^5.2.0",
-    "react-typography": "^0.16.13",
-    "typography": "^0.16.17"
+    "disqus-react": "1.0.7",
+    "gatsby": "2.18.22",
+    "gatsby-image": "2.2.38",
+    "gatsby-plugin-manifest": "2.2.37",
+    "gatsby-plugin-offline": "3.0.32",
+    "gatsby-plugin-react-helmet": "3.1.21",
+    "gatsby-plugin-sharp": "2.3.13",
+    "gatsby-plugin-typography": "2.3.21",
+    "gatsby-source-filesystem": "2.1.46",
+    "gatsby-source-wordpress": "3.1.58",
+    "gatsby-transformer-remark": "2.6.48",
+    "gatsby-transformer-sharp": "2.3.12",
+    "react": "16.12.0",
+    "react-dom": "16.12.0",
+    "react-helmet": "5.2.1",
+    "react-typography": "0.16.19",
+    "typography": "0.16.19"
   },
   "keywords": [
     "gatsby"
@@ -35,14 +35,14 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "devDependencies": {
-    "babel-eslint": "^10.0.1",
-    "eslint": "^5.10.0",
-    "eslint-config-standard": "^12.0.0",
-    "eslint-plugin-import": "^2.14.0",
-    "eslint-plugin-node": "^8.0.0",
-    "eslint-plugin-promise": "^4.0.1",
-    "eslint-plugin-react": "^7.11.1",
-    "eslint-plugin-standard": "^4.0.0"
+    "babel-eslint": "10.0.3",
+    "eslint": "6.8.0",
+    "eslint-config-standard": "14.1.0",
+    "eslint-plugin-import": "2.20.0",
+    "eslint-plugin-node": "11.0.0",
+    "eslint-plugin-promise": "4.2.1",
+    "eslint-plugin-react": "7.17.0",
+    "eslint-plugin-standard": "4.0.1"
   },
   "repository": {
     "type": "git",
