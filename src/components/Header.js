@@ -26,13 +26,13 @@ const Header = ({ siteTitle, menuLinks }) => (
           {siteTitle}
         </Link>
       </h1>
-      <nav style={{ marginTop: '0.5rem' }}>
+      <nav style={{ marginTop: '1rem' }}>
         <ul
           style={{ display: 'flex', flex: 1, listStyleType: 'none', margin: 0 }}
         >
           {menuLinks.map(link => (
             <li key={link.name} style={{ margin: '0 1rem 0 0' }}>
-              <Link to={link.link} style={{ textDecoration: 'none' }}>
+              <Link to={link.link} style={{ textDecoration: 'none', color: '#fff' }}>
                 {link.name}
               </Link>
             </li>
