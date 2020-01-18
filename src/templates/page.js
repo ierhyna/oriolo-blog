@@ -3,35 +3,39 @@ import { graphql } from 'gatsby'
 import PropTypes from 'prop-types'
 import Layout from '../components/Layout'
 
-class PageTemplate extends Component {
-  render () {
-    const { wordpressPage: page } = this.props.data
+export default function Template({
+  data
+})  {
+  const { markdownRemark } = data
+  const { html } = markdownRemark
 
-    return (
-      <Layout>
-        <h1>{page.title}</h1>
-        <div dangerouslySetInnerHTML={{ __html: page.content }} />
-      </Layout>
-    )
-  }
+  return (
+    <Layout>
+      <div dangerouslySetInnerHTML={{ __html: html }} />
+    </Layout>
+  )
 }
 
-PageTemplate.propTypes = {
+Template.propTypes = {
   data: PropTypes.shape({
-    wordpressPage: PropTypes.shape({
-      title: PropTypes.string.isRequired,
-      content: PropTypes.string.isRequired,
+    markdownRemark: PropTypes.shape({
+      html: PropTypes.string.isRequired,
+      frontmatter: PropTypes.shape({
+        title: PropTypes.string.isRequired,
+        path: PropTypes.string.isRequired,
+      }).isRequired,
     }).isRequired,
   }).isRequired,
 }
 
-export default PageTemplate
-
 export const query = graphql`
-  query PageQuery($id: String!) {
-    wordpressPage(id: { eq: $id }) {
-      title
-      content
+  query($path: String!) {
+    markdownRemark(frontmatter: { path: { eq: $path } }) {
+      html
+      frontmatter {
+        path
+        title
+      }
     }
   }
 `

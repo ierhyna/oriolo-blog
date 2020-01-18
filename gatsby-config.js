@@ -15,6 +15,7 @@ module.exports = {
         link: '/contacts',
       },
     ],
+    url: 'https://oriolo.ru'
   },
   plugins: [
     'gatsby-plugin-react-helmet',
@@ -28,8 +29,15 @@ module.exports = {
     {
       resolve: 'gatsby-source-filesystem',
       options: {
-        name: 'markdown-pages',
-        path: `${__dirname}/src/content`,
+        name: 'projects',
+        path: `${__dirname}/src/content/projects`,
+      },
+    },
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        name: 'pages',
+        path: `${__dirname}/src/content/pages`,
       },
     },
     'gatsby-transformer-remark',

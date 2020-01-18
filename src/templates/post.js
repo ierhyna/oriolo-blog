@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { graphql } from 'gatsby'
 import PropTypes from 'prop-types'
 import Layout from '../components/Layout'
+import Date from '../components/Date'
 import { DiscussionEmbed } from 'disqus-react'
 
 class PostTemplate extends Component {
@@ -11,8 +12,10 @@ class PostTemplate extends Component {
     return (
       <Layout>
         <h1>{post.title}</h1>
-        <span>{post.date}</span>
-        <div dangerouslySetInnerHTML={{ __html: post.content }} />
+        <Date dateString={post.date} format={'L'} />
+
+        <div style={{ marginTop: '1rem' }} dangerouslySetInnerHTML={{ __html: post.content }} />
+        
         <DiscussionEmbed
           shortname={'oriolo'}
           config={{
