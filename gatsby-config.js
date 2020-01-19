@@ -15,9 +15,10 @@ module.exports = {
         link: '/contacts',
       },
     ],
-    url: 'https://oriolo.ru'
+    siteUrl: 'https://oriolo.ru',
   },
   plugins: [
+    'gatsby-plugin-sitemap',
     'gatsby-plugin-react-helmet',
     {
       resolve: 'gatsby-source-filesystem',
@@ -29,15 +30,15 @@ module.exports = {
     {
       resolve: 'gatsby-source-filesystem',
       options: {
-        name: 'projects',
-        path: `${__dirname}/src/content/projects`,
+        name: 'pages',
+        path: `${__dirname}/src/content/pages`,
       },
     },
     {
       resolve: 'gatsby-source-filesystem',
       options: {
-        name: 'pages',
-        path: `${__dirname}/src/content/pages`,
+        name: 'blog',
+        path: `${__dirname}/src/content/blog`,
       },
     },
     'gatsby-transformer-remark',
@@ -46,7 +47,7 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-typography',
       options: {
-        pathToConfigModule: `src/utils/typography`,
+        pathToConfigModule: 'src/utils/typography',
       }
     },
     {
@@ -61,20 +62,8 @@ module.exports = {
         icon: 'src/images/icon-192x192.png',
       },
     },
-    {
-      resolve: 'gatsby-source-wordpress',
-      options: {
-        baseUrl: 'oriolo.ru',
-        protocol: 'https',
-        hostingWPCOM: false,
-        useACF: false,
-      },
-    },
     // this plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.app/offline
     // 'gatsby-plugin-offline',
   ],
-  mapping: {
-    'wordpress__POST.series': 'wordpress__wp_series.wordpress_id',
-  },
 }

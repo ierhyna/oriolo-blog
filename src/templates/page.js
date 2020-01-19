@@ -1,11 +1,11 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { graphql } from 'gatsby'
 import PropTypes from 'prop-types'
 import Layout from '../components/Layout'
 
-export default function Template({
+export default function PageTemplate ({
   data
-})  {
+}) {
   const { markdownRemark } = data
   const { html } = markdownRemark
 
@@ -16,7 +16,7 @@ export default function Template({
   )
 }
 
-Template.propTypes = {
+PageTemplate.propTypes = {
   data: PropTypes.shape({
     markdownRemark: PropTypes.shape({
       html: PropTypes.string.isRequired,
@@ -29,8 +29,8 @@ Template.propTypes = {
 }
 
 export const query = graphql`
-  query($path: String!) {
-    markdownRemark(frontmatter: { path: { eq: $path } }) {
+  query($slug: String!) {
+    markdownRemark(fields: { slug: { eq: $slug } }) {
       html
       frontmatter {
         path

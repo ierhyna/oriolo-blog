@@ -2,25 +2,28 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { Link } from 'gatsby'
 
-class BlogPosts extends Component {
-  render () {
-    const { posts } = this.props
-    return posts.map(({ node: post }) => (
-      <div key={post.slug}>
-        <Link to={`${post.slug}`} style={{ textDecoration: 'none' }}>
-          <h3>{post.title}</h3>
-        </Link>
-        <div dangerouslySetInnerHTML={{ __html: post.excerpt }} />
-      </div>
-    ))
-  }
+export default function BlogPosts ({
+  blog
+}) {
+  const { edges: posts } = blog
+  return posts.map(({ node: post }) => (
+    <div key={post.frontmatter.path}>
+      <Link to={`${post.frontmatter.path}`} style={{ textDecoration: 'none' }}>
+        <h3>{post.frontmatter.title}</h3>
+      </Link>
+      <div dangerouslySetInnerHTML={{ __html: post.frontmatter.excerpt || post.excerpt }} />
+    </div>
+  ))
 }
 
 BlogPosts.propTypes = {
-  posts: PropTypes.arrayOf(PropTypes.shape({
-    title: PropTypes.string.isRequired,
-    slug: PropTypes.string.isRequired,
-    excerpt: PropTypes.string.isRequired,
-  })).isRequired,
+  blog: PropTypes.shape({
+    edges: PropTypes.arrayOf(PropTypes.shape({
+      node: PropTypes.shape({
+        title: PropTypes.string,
+        slug: PropTypes.string,
+        date: PropTypes.date,
+      }).isRequired,
+    })).isRequired,
+  }).isRequired,
 }
-export default BlogPosts
