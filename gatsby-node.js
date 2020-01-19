@@ -1,150 +1,83 @@
 const path = require('path')
 const slash = require('slash')
+const { createFilePath } = require('gatsby-source-filesystem')
 
-// Implement the Gatsby API “createPages”. This is
-// called after the Gatsby bootstrap is finished so you have
-// access to any information necessary to programmatically
-// create pages.
-exports.createPages = ({ graphql, actions }) => {
-  const { createPage } = actions
+exports.onCreateNode = ({ node, getNode, actions }) => {
+  const { createNodeField } = actions
 
-  const getPages = new Promise((resolve, reject) => {
-    graphql(
-      `
-        {
-          allWordpressPage {
-            edges {
-              node {
-                id
-                slug
-                status
-                template
-              }
+  if (node.internal.type === 'MarkdownRemark') {
+    const slug = createFilePath({ node, getNode, basePath: 'pages' })
+    createNodeField({
+      node,
+      name: 'slug',
+      value: slug.split('/').join(''),
+    })
+
+    const parent = getNode(node.parent)
+    createNodeField({
+      node,
+      name: 'collection',
+      value: parent.sourceInstanceName,
+    })
+  }
+}
+
+exports.createPages = async function ({ actions, graphql }) {
+  const { data } = await graphql(`
+    query {
+      allMarkdownRemark {
+        edges {
+          node {
+            fields {
+              slug
+              collection
             }
           }
         }
-      `
-    ).then(result => {
-      if (result.errors) {
-        console.log(result.errors)
-        reject(result.errors)
       }
+    }
+  `)
 
-      // Create Page pages.
-      const pageTemplate = path.resolve('./src/templates/page.js')
-      // We want to create a detailed page for each
-      // page node. We'll just use the Wordpress Slug for the slug.
-      // The Page ID is prefixed with 'PAGE_'
-      result.data.allWordpressPage.edges.forEach(edge => {
-        createPage({
-          // Each page is required to have a `path` as well
-          // as a template component. The `context` is
-          // optional but is often necessary so the template
-          // can query data specific to each page.
-          path: edge.node.slug,
-          component: slash(pageTemplate),
-          context: {
-            id: edge.node.id,
-          },
-        })
-      })
-      resolve()
+  // Create blog and posts
+  const posts = data.allMarkdownRemark.edges.filter(edge => edge.node.fields.collection === 'blog')
+  const postsPerPage = 5
+  const numPages = Math.ceil(posts.length / postsPerPage)
+
+  Array.from({ length: numPages }).forEach((_, i) => {
+    actions.createPage({
+      path: i === 0 ? '/blog' : `/blog/${i + 1}`,
+      component: path.resolve('./src/templates/blog.js'),
+      context: {
+        limit: postsPerPage,
+        skip: i * postsPerPage,
+        numPages,
+        currentPage: i + 1,
+      },
     })
   })
 
-  const getPosts = new Promise((resolve, reject) => {
-    graphql(
-      `
-        {
-          allWordpressPost {
-            edges {
-              node {
-                id
-                slug
-                status
-                template
-                format
-              }
-            }
-          }
-        }
-      `
-    ).then(result => {
-      if (result.errors) {
-        console.log(result.errors)
-        reject(result.errors)
-      }
+  posts.forEach(edge => {
+    const slug = edge.node.fields.slug
 
-      const postTemplate = path.resolve('./src/templates/post.js')
-      // We want to create a detailed page for each
-      // post node. We'll just use the Wordpress Slug for the slug.
-      // The Post ID is prefixed with 'POST_'
-      result.data.allWordpressPost.edges.forEach(edge => {
-        createPage({
-          path: `${edge.node.slug}`,
-          component: slash(postTemplate),
-          context: {
-            id: edge.node.id,
-          },
-        })
-      })
-
-      // Create blog pages
-      const posts = result.data.allWordpressPost.edges
-      const postsPerPage = 5
-      const numPages = Math.ceil(posts.length / postsPerPage)
-
-      Array.from({ length: numPages }).forEach((_, i) => {
-        createPage({
-          path: i === 0 ? `/blog` : `/blog/${i + 1}`,
-          component: path.resolve('./src/templates/blog-page.js'),
-          context: {
-            limit: postsPerPage,
-            skip: i * postsPerPage,
-            numPages,
-            currentPage: i + 1,
-          },
-        })
-      })
-      resolve()
+    actions.createPage({
+      path: slug,
+      component: require.resolve('./src/templates/post.js'),
+      context: { slug: slug },
     })
   })
 
-  const getCategories = new Promise((resolve, reject) => {
-    graphql(
-      `
-        {
-          allWordpressCategory {
-            edges {
-              node {
-                id
-                slug
-                name
-              }
-            }
-          }
-        }
-      `
-    ).then(result => {
-      if (result.errors) {
-        console.log(result.errors)
-        reject(result.errors)
-      }
+  // Create non-blog pages
+  const pages = data.allMarkdownRemark.edges.filter(edge => edge.node.fields.collection === 'pages')
 
-      const template = path.resolve('./src/templates/taxonomy.js')
-      result.data.allWordpressCategory.edges.forEach(edge => {
-        createPage({
-          path: `/category/${edge.node.slug}`,
-          component: slash(template),
-          context: {
-            id: edge.node.id,
-          },
-        })
+  pages.forEach(edge => {
+    const slug = edge.node.fields.slug
+    
+    if (slug !== 'main') {
+      actions.createPage({
+        path: slug,
+        component: require.resolve('./src/templates/page.js'),
+        context: { slug: slug },
       })
-
-      resolve()
-    })
+    }
   })
-
-  return Promise.all([getPages, getPosts, getCategories])
 }

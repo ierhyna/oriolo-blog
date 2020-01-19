@@ -26,9 +26,19 @@ PageTemplate.propTypes = {
 export default PageTemplate
 
 export const query = graphql`
-  query TaxonomyQuery($id: String!) {
-    wordpressCategory(id: { eq: $id }) {
-      name
+  query($path: String!) {
+    markdownRemark(frontmatter: { path: { eq: $path } }) {
+      html
+      frontmatter {
+        path
+        title
+      }
     }
   }
 `
+//   query TaxonomyQuery($id: String!) {
+//     wordpressCategory(id: { eq: $id }) {
+//       name
+//     }
+//   }
+// `
