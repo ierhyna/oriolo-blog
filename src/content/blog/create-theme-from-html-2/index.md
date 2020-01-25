@@ -10,7 +10,7 @@ series: "create-wp-theme-from-html"
 
 Это второй урок из серии о том, как [создать собственную тему для WordPress](http://oriolo.ru/series/create-wp-theme-from-html/). Из него вы узнаете, какие функции должны быть в файле header.php.
 
-\[warning\]Запись обновлена 6 сентября 2015 года\[/warning\]
+Запись обновлена 6 сентября 2015 года
 
 В этом уроке подразумевается, что вы уже выполнили шаги из [части 1](http://oriolo.ru/vyorstka/create-theme-from-html-1/ "Создаем собственную тему для WordPress на основе HTML-шаблона. Часть 1").
 
@@ -91,6 +91,6 @@ series: "create-wp-theme-from-html"
 
 На этом мы закончили с редактированием файла header.php (в дальнейшем нужно будет вынести скрипты и стили в файл functions, но давайте сначала сделаем основной функционал). Можно переходить к файлу index.php. О том, как его настроить, вы узнаете из следующего урока.
 
-\[warning\]Исходный код урока доступен [здесь](https://github.com/ierhyna/wp-theme-howto/archive/Step_2.zip).\[/warning\]
+Исходный код урока доступен [здесь](https://github.com/ierhyna/wp-theme-howto/archive/Step_2.zip).
 
 Чтобы не пропустить следующий урок, [подписывайтесь на RSS блога](http://feeds.feedburner.com/oriolo_ru), или присоединяйтесь в [фейсбуке](https://www.facebook.com/oriolo.ru)!

@@ -10,13 +10,13 @@ series: ""
 
 Всем привет! Представляю мой первый плагин Goods Catalog, с помощью которого можно создать **каталог товаров на WordPress**.
 
-\[danger\]If you would like to read the description of Goods Catalog Plugin in English, please visit [that page](http://oriolo.wordpress.com/2014/03/25/goods-catalog-wordpress-plugin-that-creates-catalog-of-products/).\[/danger\]
+If you would like to read the description of Goods Catalog Plugin in English, please visit [that page](http://oriolo.wordpress.com/2014/03/25/goods-catalog-wordpress-plugin-that-creates-catalog-of-products/).
 
-\[info\]Инструкция по первоначальной настройке плагина размещена [здесь](http://oriolo.ru/dev/goods-catalog).\[/info\]
+Инструкция по первоначальной настройке плагина размещена [здесь](http://oriolo.ru/dev/goods-catalog).
 
 Плагин создает каталог, по внешнему виду и принципу работы напоминающий "Проводник" в виндовсе. То есть, на главной странице каталога размещены все рубрики (только верхнего уровня, родительские). При нажатии на рубрику открывается ее страница, где сначала выводится список подрубрик, если они есть, а потом список товаров в этой рубрике (товары из дочерних рубрик не выводятся).
 
-\[info\]**Скачать** самую последнюю версию плагина **Goods Catalog** всегда можно здесь: [http://wordpress.org/plugins/goods-catalog/](http://wordpress.org/plugins/goods-catalog/), или просто выполнить в консоли поиск плагина по запросу "Goods Catalog".\[/info\]
+**Скачать** самую последнюю версию плагина **Goods Catalog** всегда можно здесь: [http://wordpress.org/plugins/goods-catalog/](http://wordpress.org/plugins/goods-catalog/), или просто выполнить в консоли поиск плагина по запросу "Goods Catalog".
 
 Содержание
 
@@ -172,7 +172,7 @@ series: ""
 - Картинки по-умолчанию для рубрик и продуктов лежат в папке /img/, их можно заменить на собственные картинки с теми же именами файлов и размером 150х150;
 - Сетка товаров не ограничена в ширину, то есть, должна подстраиваться под ширину основной колонки используемой темы оформления. Если же это не происходит, то можно вручную поменять настройки ширины контейнера с товарами.
 
-\[warning\]О добавлении собственного оформления для каталога можно почитать тут: [Goods Catalog: собственное оформление каталога](http://oriolo.ru/goods-catalog-oformlenie/ "Goods Catalog: собственное оформление каталога")\[/warning\]
+О добавлении собственного оформления для каталога можно почитать тут: [Goods Catalog: собственное оформление каталога](http://oriolo.ru/goods-catalog-oformlenie/ "Goods Catalog: собственное оформление каталога")
 
 ### Шорткоды
 
@@ -225,4 +225,4 @@ series: ""
 - Василий Чужой
 - Александр
 
-\[warning\]Внимание! Комментарии к этой записи временно закрыты. Все обсуждение плагина пожалуйста, ведите на форуме\[/warning\]
+Внимание! Комментарии к этой записи временно закрыты. Все обсуждение плагина пожалуйста, ведите на форуме
