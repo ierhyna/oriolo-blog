@@ -1,0 +1,254 @@
+<!doctype html>
+
+<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="ru"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="ru"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8 oldie" lang="ru"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="ru"> <!--<![endif]-->
+
+<head>
+	
+	
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	
+	<title>Ошибка / MarkDay.ru</title>
+	
+	<meta name="description" content="сообщество вебмастеров и оптимизаторов">
+	<meta name="keywords" content="site, google, internet">
+
+	<link rel='stylesheet' type='text/css' href='https://markday.ru/templates/skin/starter-kit/css/reset.css' />
+<link rel='stylesheet' type='text/css' href='https://markday.ru/templates/skin/starter-kit/css/base.css' />
+<link rel='stylesheet' type='text/css' href='https://markday.ru/engine/lib/external/jquery/markitup/skins/synio/style.css' />
+<link rel='stylesheet' type='text/css' href='https://markday.ru/engine/lib/external/jquery/markitup/sets/synio/style.css' />
+<link rel='stylesheet' type='text/css' href='https://markday.ru/engine/lib/external/jquery/jcrop/jquery.Jcrop.css' />
+<link rel='stylesheet' type='text/css' href='https://markday.ru/engine/lib/external/prettify/prettify.css' />
+<link rel='stylesheet' type='text/css' href='https://markday.ru/templates/skin/starter-kit/css/grid.css' />
+<link rel='stylesheet' type='text/css' href='https://markday.ru/templates/skin/starter-kit/css/common.css' />
+<link rel='stylesheet' type='text/css' href='https://markday.ru/templates/skin/starter-kit/css/text.css' />
+<link rel='stylesheet' type='text/css' href='https://markday.ru/templates/skin/starter-kit/css/forms.css' />
+<link rel='stylesheet' type='text/css' href='https://markday.ru/templates/skin/starter-kit/css/buttons.css' />
+<link rel='stylesheet' type='text/css' href='https://markday.ru/templates/skin/starter-kit/css/navs.css' />
+<link rel='stylesheet' type='text/css' href='https://markday.ru/templates/skin/starter-kit/css/icons.css' />
+<link rel='stylesheet' type='text/css' href='https://markday.ru/templates/skin/starter-kit/css/tables.css' />
+<link rel='stylesheet' type='text/css' href='https://markday.ru/templates/skin/starter-kit/css/topic.css' />
+<link rel='stylesheet' type='text/css' href='https://markday.ru/templates/skin/starter-kit/css/comments.css' />
+<link rel='stylesheet' type='text/css' href='https://markday.ru/templates/skin/starter-kit/css/blocks.css' />
+<link rel='stylesheet' type='text/css' href='https://markday.ru/templates/skin/starter-kit/css/modals.css' />
+<link rel='stylesheet' type='text/css' href='https://markday.ru/templates/skin/starter-kit/css/blog.css' />
+<link rel='stylesheet' type='text/css' href='https://markday.ru/templates/skin/starter-kit/css/profile.css' />
+<link rel='stylesheet' type='text/css' href='https://markday.ru/templates/skin/starter-kit/css/wall.css' />
+<link rel='stylesheet' type='text/css' href='https://markday.ru/templates/skin/starter-kit/css/infobox.css' />
+<link rel='stylesheet' type='text/css' href='https://markday.ru/templates/skin/starter-kit/css/jquery.notifier.css' />
+<link rel='stylesheet' type='text/css' href='https://markday.ru/templates/skin/starter-kit/css/smoothness/jquery-ui.css' />
+<link rel='stylesheet' type='text/css' href='https://markday.ru/templates/skin/starter-kit/themes/default/style.css' />
+<link rel='stylesheet' type='text/css' href='https://markday.ru/templates/skin/starter-kit/css/print.css' />
+
+	
+	<link href="https://markday.ru/templates/skin/starter-kit/images/favicon.ico?v1" rel="shortcut icon" />
+	<link rel="search" type="application/opensearchdescription+xml" href="https://markday.ru/search/opensearch/" title="MarkDay.ru" />
+
+	
+	
+		
+	
+	<script type="text/javascript">
+		var DIR_WEB_ROOT 			= 'https://markday.ru';
+		var DIR_STATIC_SKIN 		= 'https://markday.ru/templates/skin/starter-kit';
+		var DIR_ROOT_ENGINE_LIB 	= 'https://markday.ru/engine/lib';
+		var LIVESTREET_SECURITY_KEY = '5283d74e3037c5c3bd178c3f1eef57c9';
+		var SESSION_ID				= 'd8e7f8dab2a8d36bbcad86bde15f11b6';
+		var BLOG_USE_TINYMCE		= '';
+		
+		var TINYMCE_LANG = 'en';
+					TINYMCE_LANG = 'ru';
+		
+		var aRouter = new Array();
+					aRouter['error'] = 'https://markday.ru/error/';
+					aRouter['registration'] = 'https://markday.ru/registration/';
+					aRouter['profile'] = 'https://markday.ru/profile/';
+					aRouter['my'] = 'https://markday.ru/my/';
+					aRouter['blog'] = 'https://markday.ru/blog/';
+					aRouter['personal_blog'] = 'https://markday.ru/personal_blog/';
+					aRouter['index'] = 'https://markday.ru/index/';
+					aRouter['topic'] = 'https://markday.ru/topic/';
+					aRouter['login'] = 'https://markday.ru/login/';
+					aRouter['people'] = 'https://markday.ru/people/';
+					aRouter['settings'] = 'https://markday.ru/settings/';
+					aRouter['tag'] = 'https://markday.ru/tag/';
+					aRouter['talk'] = 'https://markday.ru/talk/';
+					aRouter['comments'] = 'https://markday.ru/comments/';
+					aRouter['rss'] = 'https://markday.ru/rss/';
+					aRouter['link'] = 'https://markday.ru/link/';
+					aRouter['question'] = 'https://markday.ru/question/';
+					aRouter['blogs'] = 'https://markday.ru/blogs/';
+					aRouter['search'] = 'https://markday.ru/search/';
+					aRouter['admin'] = 'https://markday.ru/admin/';
+					aRouter['ajax'] = 'https://markday.ru/ajax/';
+					aRouter['feed'] = 'https://markday.ru/feed/';
+					aRouter['stream'] = 'https://markday.ru/stream/';
+					aRouter['photoset'] = 'https://markday.ru/photoset/';
+					aRouter['subscribe'] = 'https://markday.ru/subscribe/';
+					aRouter['language'] = 'https://markday.ru/language/';
+					aRouter['page'] = 'https://markday.ru/page/';
+					aRouter['premoderation'] = 'https://markday.ru/premoderation/';
+			</script>
+	
+	
+	<script type='text/javascript' src='https://markday.ru/engine/lib/external/jquery/jquery.js'></script>
+<script type='text/javascript' src='https://markday.ru/engine/lib/external/jquery/jquery-ui.js'></script>
+<script type='text/javascript' src='https://markday.ru/engine/lib/external/jquery/jquery.notifier.js'></script>
+<script type='text/javascript' src='https://markday.ru/engine/lib/external/jquery/jquery.jqmodal.js'></script>
+<script type='text/javascript' src='https://markday.ru/engine/lib/external/jquery/jquery.scrollto.js'></script>
+<script type='text/javascript' src='https://markday.ru/engine/lib/external/jquery/jquery.rich-array.min.js'></script>
+<script type='text/javascript' src='https://markday.ru/engine/lib/external/jquery/markitup/jquery.markitup.js'></script>
+<script type='text/javascript' src='https://markday.ru/engine/lib/external/jquery/jquery.form.js'></script>
+<script type='text/javascript' src='https://markday.ru/engine/lib/external/jquery/jquery.jqplugin.js'></script>
+<script type='text/javascript' src='https://markday.ru/engine/lib/external/jquery/jquery.cookie.js'></script>
+<script type='text/javascript' src='https://markday.ru/engine/lib/external/jquery/jquery.serializejson.js'></script>
+<script type='text/javascript' src='https://markday.ru/engine/lib/external/jquery/jquery.file.js'></script>
+<script type='text/javascript' src='https://markday.ru/engine/lib/external/jquery/jcrop/jquery.Jcrop.js'></script>
+<script type='text/javascript' src='https://markday.ru/engine/lib/external/jquery/poshytip/jquery.poshytip.js'></script>
+<script type='text/javascript' src='https://markday.ru/engine/lib/external/jquery/jquery.placeholder.min.js'></script>
+<script type='text/javascript' src='https://markday.ru/engine/lib/external/jquery/jquery.charcount.js'></script>
+<script type='text/javascript' src='https://markday.ru/engine/lib/external/prettify/prettify.js'></script>
+<script type='text/javascript' src='https://markday.ru/engine/lib/internal/template/js/main.js'></script>
+<script type='text/javascript' src='https://markday.ru/engine/lib/internal/template/js/favourite.js'></script>
+<script type='text/javascript' src='https://markday.ru/engine/lib/internal/template/js/blocks.js'></script>
+<script type='text/javascript' src='https://markday.ru/engine/lib/internal/template/js/talk.js'></script>
+<script type='text/javascript' src='https://markday.ru/engine/lib/internal/template/js/vote.js'></script>
+<script type='text/javascript' src='https://markday.ru/engine/lib/internal/template/js/poll.js'></script>
+<script type='text/javascript' src='https://markday.ru/engine/lib/internal/template/js/subscribe.js'></script>
+<script type='text/javascript' src='https://markday.ru/engine/lib/internal/template/js/infobox.js'></script>
+<script type='text/javascript' src='https://markday.ru/engine/lib/internal/template/js/geo.js'></script>
+<script type='text/javascript' src='https://markday.ru/engine/lib/internal/template/js/wall.js'></script>
+<script type='text/javascript' src='https://markday.ru/engine/lib/internal/template/js/usernote.js'></script>
+<script type='text/javascript' src='https://markday.ru/engine/lib/internal/template/js/comments.js'></script>
+<script type='text/javascript' src='https://markday.ru/engine/lib/internal/template/js/blog.js'></script>
+<script type='text/javascript' src='https://markday.ru/engine/lib/internal/template/js/user.js'></script>
+<script type='text/javascript' src='https://markday.ru/engine/lib/internal/template/js/userfeed.js'></script>
+<script type='text/javascript' src='https://markday.ru/engine/lib/internal/template/js/userfield.js'></script>
+<script type='text/javascript' src='https://markday.ru/engine/lib/internal/template/js/stream.js'></script>
+<script type='text/javascript' src='https://markday.ru/engine/lib/internal/template/js/photoset.js'></script>
+<script type='text/javascript' src='https://markday.ru/engine/lib/internal/template/js/toolbar.js'></script>
+<script type='text/javascript' src='https://markday.ru/engine/lib/internal/template/js/settings.js'></script>
+<script type='text/javascript' src='https://markday.ru/engine/lib/internal/template/js/topic.js'></script>
+<script type='text/javascript' src='https://markday.ru/engine/lib/internal/template/js/hook.js'></script>
+<script type='text/javascript' src='https://markday.ru/templates/skin/starter-kit/js/template.js'></script>
+<script type='text/javascript' src='https://markday.ru/plugins/aceadminpanel/templates/skin/admin_new/assets/js/ace-admin.js?v=2'></script>
+<!--[if lt IE 9]><script type='text/javascript' src='https://markday.ru/engine/lib/external/html5shiv.js'></script><![endif]-->
+<script type='text/javascript' src='http://yandex.st/share/share.js'></script>
+
+
+	
+	<script type="text/javascript">
+		var tinyMCE = false;
+		ls.lang.load([]);
+		ls.registry.set('comment_max_tree',5);
+		ls.registry.set('block_stream_show_tip',true);
+	</script>
+	
+	
+			<style>
+			#container {
+				width: 976px;
+			}
+		</style>
+		
+	
+	<script type="text/javascript">
+	var LS_ROUTER_ACTION = 'error';
+	var LS_ROUTER_EVENT = '404';
+</script>
+
+</head>
+
+
+
+	
+	
+
+
+<body class=" ls-user-role-guest ls-user-role-not-admin light width-fixed">
+	
+	
+	
+	<div id="wrap" class="light">
+		<header id="header" class="light" role="banner">
+			<div id="container">
+				
+				
+				<h1 class="site-name light"><a href="https://markday.ru">MarkDay.ru</a></h1>
+				
+				
+			</div>
+		</header>
+	
+		<div id="container" class="">
+	
+			<div id="wrapper" class="light no-sidebar ">
+			
+				<div id="content" role="main">
+				
+					
+
+<div class="content-light error">
+
+	<div class="content-error">
+					<h2 class="page-header">Ошибка: <span>404</span></h2>
+		
+		<p>К сожалению, такой страницы не существует. Вероятно, она была удалена с сервера, либо ее здесь никогда не было.</p>
+		<br />
+		<br />
+		<p><a href="javascript:history.go(-1);">Вернуться назад</a><br />
+		<a href="https://markday.ru">перейти на главную</a></p>
+	</div>
+
+</div>
+
+					
+				</div> <!-- /content -->
+				
+			</div> <!-- /wrapper -->
+		</div> <!-- /container -->
+		
+		<div id="push" class="light"></div>
+	</div> <!-- /wrap -->
+
+
+	
+	<footer id="footer" class="light">
+		<div id="container">
+			
+		</div>
+	</footer>
+
+
+
+			<script type="text/javascript">
+			var _lsIsLoadGA=(typeof(window._gaq)=='undefined') ? false : true ;
+
+			  var _gaq = _gaq || [];
+			  _gaq.push(['lscounter._setAccount', 'UA-28922093-1']);
+			  _gaq.push(['lscounter._trackPageview']);
+
+			if (!_lsIsLoadGA) {
+			  (function() {
+				var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+				ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+				var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+			  })();
+			}
+			</script>
+		
+
+</body>
+</html><!--LiveInternet counter--><script type="text/javascript">
+document.write("<a href='//www.liveinternet.ru/click' "+
+"target=_blank><img src='//counter.yadro.ru/hit?t58.2;r"+
+escape(document.referrer)+((typeof(screen)=="undefined")?"":
+";s"+screen.width+"*"+screen.height+"*"+(screen.colorDepth?
+screen.colorDepth:screen.pixelDepth))+";u"+escape(document.URL)+
+";h"+escape(document.title.substring(0,150))+";"+Math.random()+
+"' alt='' title='LiveInternet' "+
+"border='0' width='88' height='31'><\/a>")
+</script><!--/LiveInternet-->
