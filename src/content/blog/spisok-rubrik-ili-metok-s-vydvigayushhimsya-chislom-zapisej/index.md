@@ -29,7 +29,6 @@ $args = array(
   'taxonomy' => 'category' // выводим рубрики; чтобы вывести теги, напишите post_tag
 );
 echo '<div class="tags-container"><ul class="tags">';
-<div></div>
 // список рубрик
 $categories = get_categories($args);
   foreach($categories as $category) { 
@@ -40,12 +39,11 @@ $categories = get_categories($args);
     ' <span>' . $category->count . '</span></a>';
     echo '</li>';
     } 
-<div></div>
 echo '</ul></div>';
 ?>
 ```
 
-Обратите внимание, в исходном HTML-коде список "обернут" в тег `<div class="container"<`, но если мы оставим такое название класса, то в некоторых темах на WordPress код работать не будет, так как такое название класса уже используется для div-а, в который "обернута" вся страница. Поэтому я переименовала класс в tags-container.
+Обратите внимание, в исходном HTML-коде список "обернут" в тег `&lt;div class="container"&lt;`, но если мы оставим такое название класса, то в некоторых темах на WordPress код работать не будет, так как такое название класса уже используется для div-а, в который "обернута" вся страница. Поэтому я переименовала класс в tags-container.
 
 ### Шаг 2. Добавляем стили
 
@@ -59,36 +57,29 @@ echo '</ul></div>';
  *
  * Sass/SCSS source: http://goo.gl/KNp7z
  */
-<div></div>
 .tags-container {
   margin: 50px auto;
   width: 380px;
 }
-<div></div>
 .tags {
   zoom: 1;
 }
-<div></div>
 .tags:before, .tags:after {
   content: '';
   display: table;
 }
-<div></div>
 .tags:after {
   clear: both;
 }
-<div></div>
 .tags li {
   position: relative;
   float: left;
   margin: 0 0 8px 12px;
 }
-<div></div>
 .tags li:active {
   margin-top: 1px;
   margin-bottom: 7px;
 }
-<div></div>
 .tags li:after {
   content: '';
   z-index: 2;
@@ -103,14 +94,12 @@ echo '</ul></div>';
   -webkit-box-shadow: inset 1px 0 #99400e;
   box-shadow: inset 1px 0 #99400e;
 }
-<div></div>
 .tags a, .tags span {
   display: block;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
-<div></div>
 .tags a {
   height: 26px;
   line-height: 23px;
@@ -131,14 +120,12 @@ echo '</ul></div>';
   -webkit-box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.7), 0 1px 2px rgba(0, 0, 0, 0.05);
   box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.7), 0 1px 2px rgba(0, 0, 0, 0.05);
 }
-<div></div>
 .tags a:hover span {
   padding: 0 7px 0 6px;
   max-width: 40px;
   -webkit-box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.15), 1px 1px 2px rgba(0, 0, 0, 0.2);
   box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.15), 1px 1px 2px rgba(0, 0, 0, 0.2);
 }
-<div></div>
 .tags span {
   position: absolute;
   top: 1px;
@@ -169,13 +156,11 @@ echo '</ul></div>';
   -o-transition-property: padding, max-width;
   transition-property: padding, max-width;
 }
-<div></div>
 .green li:after {
   background: #65bb34;
   -webkit-box-shadow: inset 1px 0 #3a6b1e;
   box-shadow: inset 1px 0 #3a6b1e;
 }
-<div></div>
 .green span {
   background: #65bb34;
   border-color: #549b2b #4f9329 #4b8b27;
@@ -184,13 +169,11 @@ echo '</ul></div>';
   background-image: -o-linear-gradient(top, #71ca3f, #5aa72e);
   background-image: linear-gradient(to bottom, #71ca3f, #5aa72e);
 }
-<div></div>
 .blue li:after {
   background: #56a3d5;
   -webkit-box-shadow: inset 1px 0 #276f9e;
   box-shadow: inset 1px 0 #276f9e;
 }
-<div></div>
 .blue span {
   background: #56a3d5;
   border-color: #3591cd #318cc7 #2f86be;

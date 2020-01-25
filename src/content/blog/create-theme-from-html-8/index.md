@@ -31,7 +31,6 @@ series: "create-wp-theme-from-html"
 			<span class="month"><?php the_time('M'); ?></span>
 			<span class="year"><?php the_time('Y'); ?></span>
 <!-- <span class="month">Jan<span>uary</span></span> <span class="day">14</span><span class="year">, 2013</span> -->
-<div></div>
 			</span>
 			<ul class="stats">
 				<li><a href="#" class="fa fa-comment">16</a></li>
@@ -61,13 +60,11 @@ the_post_thumbnail();
 <?php while ( have_posts() ) : the_post(); ?>
 <?php get_template_part('content') ?>
 <?php endwhile; ?>
-<div></div>
 <!-- Pager -->
 <?php
 if (function_exists('oriolo_pagination')) oriolo_pagination(); 
 else posts_nav_link();
 ?>
-<div></div>
 </div>
 </div>
 <?php get_sidebar(); ?>
@@ -96,7 +93,6 @@ else posts_nav_link();
 А теперь начинается магия :) Создайте копию файла content.php, и назовите ее content-single.php. Затем поменяйте функцию `get_template_part` в файле single.php, чтобы она выглядела вот так:
 
 ```php
-
 <?php get_template_part('content', 'single') ?>
 ```
 
@@ -142,14 +138,12 @@ else posts_nav_link();
 
 ```php
 <div id="comments">
-<div></div>
 </div><!-- #comments -->
 ```
 
 Сначала давайте проверим, не защищена ли запись паролем.:
 
 ```php{2-13}
-
 <div id="comments">
 <?php if ( post_password_required() ) : ?>
 				<p class="nopassword"><?php _e( 'This post is password protected. Enter the password to view any comments.', 'striped' ); ?></p>
@@ -164,13 +158,11 @@ else posts_nav_link();
 	endif;
 ?>
 </div><!-- #comments -->
-
 ```
 
 Потом проверим, есть ли к записи коммментарии:
 
 ```php{14-16}
-
 <div id="comments">
 <?php if ( post_password_required() ) : ?>
 				<p class="nopassword"><?php _e( 'This post is password protected. Enter the password to view any comments.', 'striped' ); ?></p>
@@ -185,10 +177,8 @@ else posts_nav_link();
 	endif;
 ?>
 <?php if ( have_comments() ) : ?>
-<div></div>
 <?php endif; // end have_comments() ?>
 </div><!-- #comments -->
-
 ```
 
 Если комментарии есть, то их нужно вывести:
@@ -226,7 +216,7 @@ number_format_i18n( get_comments_number() ), '<em>' . get_the_title() . '</em>' 
 Ну и напоследок сделаем уведомление на случай, если комментариев к записи нет, и комментирование запрещено:
 
 ```php
-	<?php
+<?php
 	/*
 	 * If there are no comments and comments are closed, let's leave a little note.
 	 */
@@ -252,20 +242,17 @@ number_format_i18n( get_comments_number() ), '<em>' . get_the_title() . '</em>' 
 		return;
 	endif;
 ?>
-<div></div>
 <?php if ( have_comments() ) : ?>
 			<h3 id="comments-title"><?php
 			printf( _n( 'One Response to %2$s', '%1$s Responses to %2$s', get_comments_number(), 'striped' ),
 			number_format_i18n( get_comments_number() ), '<em>' . get_the_title() . '</em>' );
 			?></h3>
-<div></div>
 <?php if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : // Are there comments to navigate through? ?>
 			<div class="navigation">
 				<div class="nav-previous"><?php previous_comments_link( __( '<span class="meta-nav">&larr;</span> Older Comments', 'striped' ) ); ?></div>
 				<div class="nav-next"><?php next_comments_link( __( 'Newer Comments <span class="meta-nav">&rarr;</span>', 'striped' ) ); ?></div>
 			</div> <!-- .navigation -->
 <?php endif; // check for comment navigation ?>
-<div></div>
 			<ol class="commentlist">
 				<?php
 					/*
@@ -274,14 +261,12 @@ number_format_i18n( get_comments_number() ), '<em>' . get_the_title() . '</em>' 
 					wp_list_comments();
 				?>
 			</ol>
-<div></div>
 <?php if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : // Are there comments to navigate through? ?>
 			<div class="navigation">
 				<div class="nav-previous"><?php previous_comments_link( __( '<span class="meta-nav">&larr;</span> Older Comments', 'striped' ) ); ?></div>
 				<div class="nav-next"><?php next_comments_link( __( 'Newer Comments <span class="meta-nav">&rarr;</span>', 'striped' ) ); ?></div>
 			</div><!-- .navigation -->
 <?php endif; // check for comment navigation ?>
-<div></div>
 	<?php
 	/*
 	 * If there are no comments and comments are closed, let's leave a little note.
@@ -290,9 +275,7 @@ number_format_i18n( get_comments_number() ), '<em>' . get_the_title() . '</em>' 
 	if ( ! comments_open() && $num_comments == 0 ) : ?>
 		<p class="nocomments"><?php _e( 'Comments are closed.' , 'striped' ); ?></p>
 	<?php endif;  ?>
-<div></div>
 <?php endif; // end have_comments() ?>
-<div></div>
 </div><!-- #comments -->
 ```
 
@@ -301,9 +284,7 @@ number_format_i18n( get_comments_number() ), '<em>' . get_the_title() . '</em>' 
 Вывести форму для добавления комментариев можно при помощи функции `comment_form`:
 
 ```php
-
 <?php comment_form(); ?>
-
 ```
 
 Добавьте эту функцию в конце файла comments.php до закрывающего тега `div`.

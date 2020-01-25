@@ -17,7 +17,6 @@ series: "create-wp-theme-from-html"
 ```php
 // Register Sidebar
 function striped_sidebar() {
-<div></div>
 	$args = array(
 		'id'            => 'sidebar-left',
 		'name'          => __( 'Sidebar', 'striped' ),
@@ -29,17 +28,14 @@ function striped_sidebar() {
 		'after_widget'  => '</div>',
 	);
 	register_sidebar( $args );
-<div></div>
 }
-<div></div>
 // Hook into the 'widgets_init' action
 add_action( 'widgets_init', 'striped_sidebar' );
-
 ```
 
 Немного о возможных аргументах:
 
-- `'id' => 'sidebar-left'` - задает ID сайдбара, по которому мы в дальнейшем будем выводить его в теме
+- `'id' =&gt; 'sidebar-left'` - задает ID сайдбара, по которому мы в дальнейшем будем выводить его в теме
 - `'name'` - название сайдбара, которое будет выводиться в консоли при добавлении в него виджетов
 - `'before_title'`, `'after_title'`, `'before_widget'`, `'after_widget'` - задают теги, которые будут до и после заголовка виджета и до и после самого виджета
 
@@ -85,7 +81,7 @@ add_action( 'widgets_init', 'striped_sidebar' );
 Сначала посмотрим, как выводятся виджеты в верстке. Они обернуты в тег `section`, а заголовки виджетов - в `header`. Сделаем также в нашей теме, внесем измерения в `'before_title'` и `'after_title'`, `'before_widget'` и `'after_widget'`:
 
 ```php
-	$args = array(
+$args = array(
 		'id'            => 'sidebar-left',
 		'name'          => __( 'Sidebar', 'striped' ),
 		'description'   => __( 'Left Sidebar', 'striped' ),

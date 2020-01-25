@@ -73,9 +73,7 @@ series: ""
  * Author URI: http://ваш-сайт
  * License: GPL2
  */
-<div></div>
 // ниже начинается мой плагин
-<div></div>
 
 ?>
 ```

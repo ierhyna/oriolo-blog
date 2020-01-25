@@ -55,8 +55,8 @@
 		var DIR_WEB_ROOT 			= 'https://markday.ru';
 		var DIR_STATIC_SKIN 		= 'https://markday.ru/templates/skin/starter-kit';
 		var DIR_ROOT_ENGINE_LIB 	= 'https://markday.ru/engine/lib';
-		var LIVESTREET_SECURITY_KEY = 'cf56d65c48bf3edaf6d332b308ee6634';
-		var SESSION_ID				= 'be230e454201b4b87c43a9016fe1440c';
+		var LIVESTREET_SECURITY_KEY = 'f3f794e8110a8c4e6b3b2d12a43abf69';
+		var SESSION_ID				= '424176a0a0e4af868fd8c7470ed17deb';
 		var BLOG_USE_TINYMCE		= '';
 		
 		var TINYMCE_LANG = 'en';

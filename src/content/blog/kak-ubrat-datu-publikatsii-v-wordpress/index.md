@@ -30,6 +30,10 @@ series: ""
 
 Если в index.php вашего шаблона нет функции вывода даты, посмотрите, есть ли в папке с файлами темы файлы content.php и content-single.php? Если да, то чтобы убрать дату, надо из этих файлов удалить строки, содержащие get\_the\_date(). Например:
 
+```php
+<span class="entry-date"><!--?php echo get_the_date(); ?--></span>
+```
+
 ### Случай третий, functions
 
 Если же content.php и content-single.php не содержат ничего похожего на подобную функцию, то посмотрите в файл functions.php, весьма вероятно, что удалить дату можно будет отредактировав этот файл.
@@ -38,11 +42,11 @@ series: ""
 
 ```php
 function oriolo_posted_on() {
-	echo '<img alt="" src="'. get_bloginfo(">&nbsp;';
+	echo '<img alt="" src="'. get_bloginfo(" /> ';
 	printf( __( '<time class="entry-date" datetime="%3$s">%4$s</time>
 	<span class="byline"><span class="sep"> by </span> <span class="author vcard">
 	<a class="url fn n" title="%6$s" href="%5$s" rel="author">%7$s</a>
-	</span></span>&nbsp;', 'oriolo' ),
+	</span></span> ', 'oriolo' ),
 		esc_url( get_permalink() ),
 		esc_attr( get_the_time() ),
 		esc_attr( get_the_date( 'c' ) ),
@@ -60,7 +64,7 @@ function oriolo_posted_on() {
 function oriolo_posted_on() {
 	printf( __( '<span class="byline"><span class="sep"> by </span> <span class="author vcard">
 	<a class="url fn n" title="%6$s" href="%5$s" rel="author">%7$s</a>
-	</span></span>&nbsp;', 'oriolo' ),
+	</span></span> ', 'oriolo' ),
 		esc_url( get_permalink() ),
 		esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ),
 		esc_attr( sprintf( __( 'View all posts by %s', 'oriolo' ), get_the_author() ) ),

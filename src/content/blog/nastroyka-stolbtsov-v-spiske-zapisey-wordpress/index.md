@@ -31,7 +31,7 @@ function remove_post_columns($posts_columns) {
 		"tags" => "Метки",
 		"date" => "Дата",
 		"comments" => '
-		<div class="vers"><img src="' . esc_url( admin_url( 'images/comment-grey-bubble.png' ) ) . '" alt="Comments"></div>
+		<div class="vers"><img src="' . esc_url( admin_url( 'images/comment-grey-bubble.png' ) ) . '" alt="Comments" /></div>
 		',
 	);
 	return $posts_columns;

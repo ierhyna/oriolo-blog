@@ -21,7 +21,6 @@ series: ""
 Теперь осталось заменить тег `h3` на `p` в файле functions.php вашего шаблона. Находим там вот такой код:
 
 ```php
-
 register_sidebar(array(
 	'name'=>'Left Sidebar',
 	'before_widget' => '<div id="%1$s" class="widget %2$s">',
@@ -29,15 +28,13 @@ register_sidebar(array(
 	'before_title' => '<h3 class="widget-title">',
 	'after_title' => '</h3>',
 ));
-
 ```
 
-и вместо `h3` пишем `div`, и добавляем `<p>`.
+и вместо `h3` пишем `div`, и добавляем `&lt;p&gt;`.
 
 В итоге, у меня получилось следующее:
 
 ```php
-
 register_sidebar(array(
 	'name'=>'Left Sidebar',
 	'before_widget' => '<div id="%1$s" class="widget %2$s">',
@@ -45,7 +42,6 @@ register_sidebar(array(
 	'before_title' => '<div class="widget-title"><p>',
 	'after_title' => '</p></div>',
 ));
-
 ```
 
 Проделываем те же самые операции с другими сайдбарами, если они есть.
