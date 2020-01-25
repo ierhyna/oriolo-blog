@@ -18,22 +18,21 @@ series: ""
 
 После этого необходимо прописать изменения в файлах .htaccess и robots.txt. Создайте эти файлы в корневом каталоге, если они отсутствуют. В файле .htaccess необходимо прописать перенаправление на предпочитаемый домен. В моем случае (то есть при использовании домена без www), необходимо добавить следующие строки:
 
-```
-
+```php
 # удаляем www
-<ifmodule mod_rewrite.c="">
+<IfModule mod_rewrite.c>
 Options +FollowSymLinks
 RewriteEngine On
 RewriteCond %{HTTP_HOST} ^www.oriolo\.ru$ [NC]
 RewriteRule ^(.*)$ http://oriolo.ru/$1 [R=301,L]
-</ifmodule>
+</IfModule>
 ```
 
 Не забудьте заменить доменное имя на ваше!
 
 В файле robots.txt надо добавить:
 
-```
+```php
 Host: oriolo.ru
 ```
 
@@ -68,7 +67,6 @@ Host: oriolo.ru
 Это можно сделать с помощью внесения изменений в файл functions.php. Ведь вполне возможно, что после того, как вы нажмете кнопку "Опубликовать", вы обнаружите ошибку в тексте, неработающую ссылку или неправильно отформатированную картинку. Для того, чтобы вашу ошибку не увидели все ваши подписчики, можно установить задержку отправки поста в RSS-ленту на 10-15 минут.
 
 ```php
-
 // задержка публикации RSS start
 function publish_later_on_feed($where) {
  global $wpdb;
@@ -85,7 +83,6 @@ function publish_later_on_feed($where) {
  return $where;
 }
 add_filter('posts_where', 'publish_later_on_feed');
-
 ```
 
 ### Содержание блога

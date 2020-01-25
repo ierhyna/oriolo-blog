@@ -17,12 +17,10 @@ series: ""
 Итак, для того, чтобы изменить качество миниатюр, в файл functions.php, надо добавить следующий код:
 
 ```php
-
 function filter_jpeg_quality( $quality ) {  
 	return 90;
 }
 add_filter( 'jpeg_quality', 'filter_jpeg_quality' );
-
 ```
 
 Это установит качество миниатюр на 90%.

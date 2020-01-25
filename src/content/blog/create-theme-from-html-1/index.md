@@ -114,7 +114,6 @@ License: CCA 3.0 license
 License URI: http://creativecommons.org/licenses/by/3.0/
 Tags: white, blue, left-sidebar, right-sidebar
 */
-
 ```
 
 Вместо Author и Author URI можете написать свое имя и сайт, а вместо Theme Name - название темы.
@@ -130,18 +129,14 @@ Tags: white, blue, left-sidebar, right-sidebar
 <html>
   <head>
     <meta charset="UTF-8">
-<div></div>
     <title>Simple Blog Home</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-<div></div>
     <!-- <link rel='stylesheet' href='//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css'> -->
     <link rel='stylesheet' href='css/bootstrap.min.css'>
     <link rel='stylesheet' href='css/main.css'>
   
   </head>
-<div></div>
   <body>
-<div></div>
   <div class="container">
   <header class="row">
     <div class="col-md-12 clearfix">
@@ -164,7 +159,7 @@ Tags: white, blue, left-sidebar, right-sidebar
 Затем основное содержимое вставим в файл index.php:
 
 ```php
-    <!-- main and sidebar -->
+<!-- main and sidebar -->
     <main class="col-md-9">
       <article class="post">
         <header>
@@ -210,13 +205,12 @@ Tags: white, blue, left-sidebar, right-sidebar
         </ul>
       </nav>
     </main>
-
 ```
 
 Далее сделаем сайдбар sidebar.php:
 
 ```php
-    <aside class="sidebar col-md-3">
+<aside class="sidebar col-md-3">
       <div class="widget">
         <div class="input-group">
           <input type="text" class="form-control" placeholder="Search for...">
@@ -236,7 +230,6 @@ Tags: white, blue, left-sidebar, right-sidebar
       </div>
       <div class="widget widget_calendar">
         <h3>Calendar Widget</h3>
-<div></div>
         <div id="calendar_wrap">
           <!-- calendar widget -->
           <table id="wp-calendar">
@@ -252,7 +245,6 @@ Tags: white, blue, left-sidebar, right-sidebar
                 <th scope="col" title="Sunday">Sun</th>
               </tr>
             </thead>
-<div></div>
             <tfoot>
               <tr>
                 <td colspan="3" id="prev"><a href="#">&laquo; May</a></td>
@@ -260,7 +252,6 @@ Tags: white, blue, left-sidebar, right-sidebar
                 <td colspan="3" id="next" class="pad">&nbsp;</td>
               </tr>
             </tfoot>
-<div></div>
             <tbody>
               <tr>
                 <td>1</td>
@@ -320,11 +311,10 @@ Tags: white, blue, left-sidebar, right-sidebar
 И подвал footer.php
 
 ```php
-  <footer class="row">
+<footer class="row">
     <p class="col-md-12">&copy; Irina Sokolovskaya</p>
   </footer>
   </div>
-<div></div>
   </body>
 </html>
 ```
@@ -349,7 +339,7 @@ Tags: white, blue, left-sidebar, right-sidebar
 Также нужно внести некоторые изменения в **header.php**. Давайте пропишем через **echo get\_template\_directory\_uri()** путь ко всем используемым скриптам и стилям:
 
 ```php
-    <!-- <link rel='stylesheet' href='//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css'> -->
+<!-- <link rel='stylesheet' href='//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css'> -->
     <link rel='stylesheet' href='<?php echo get_template_directory_uri(); ?>/css/bootstrap.min.css'>
     <link rel='stylesheet' href='<?php echo get_template_directory_uri(); ?>/css/main.css'>
 ```

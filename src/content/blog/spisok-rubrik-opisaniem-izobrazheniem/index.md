@@ -41,7 +41,6 @@ $args = array(
 	'pad_counts' => true
 );
 $catlist = get_categories($args); // получаем список рубрик
-<div></div>
 foreach($catlist as $categories_item)
 	{
 	// получаем данные из плагина Taxonomy Images
@@ -63,10 +62,9 @@ foreach($catlist as $categories_item)
 	// выводим описание и название рубрики
 	echo "<li><a href=\"#\">" . $categories_item->cat_name . "</a><br /><span class=\"small-text\">" . $categories_item->category_description . "</span></li>";
 	}
-
 ```
 
-В строках 7 и 15 `'taxonomy' => 'category'` вместо category надо написать название таксономии, для которой вы хотите вывести изображения. Если это рубрики - то оставить без изменений, если метки - то написать `post_tag`, если пользовательская таксономия - то ее название, например, `portfolio`.
+В строках 7 и 15 `'taxonomy' =&gt; 'category'` вместо category надо написать название таксономии, для которой вы хотите вывести изображения. Если это рубрики - то оставить без изменений, если метки - то написать `post_tag`, если пользовательская таксономия - то ее название, например, `portfolio`.
 
 Итак, мы вывели список рубрик с описанием и изображением рубрики.
 

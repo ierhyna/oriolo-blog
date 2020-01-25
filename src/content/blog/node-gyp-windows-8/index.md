@@ -25,7 +25,6 @@ npm install -g node-gyp
 Если node-gyp установлен локально для проекта, то в некоторых случаях возможна ошибка **Failed at install script 'node-gyp rebuild'**, например:
 
 ```sh
-
 npm ERR! bufferutil@1.2.1 install: `node-gyp rebuild`
 npm ERR! Exit status 1
 npm ERR!
@@ -33,13 +32,11 @@ npm ERR! Failed at the bufferutil@1.2.1 install script 'node-gyp rebuild'.
 npm ERR! Make sure you have the latest version of node.js and npm installed.
 npm ERR! If you do, this is most likely a problem with the bufferutil package,
 npm ERR! not with npm itself.
-
 ```
 
 Если у вас не установлен Python, или Node.js не может его найти, возникает ошибка **Can't find Python executable "python", you can set the PYTHON env variable**:
 
 ```ps
-
 > node-gyp rebuild
 gyp info it worked if it ends with ok
 gyp info using node-gyp@3.3.0
@@ -50,7 +47,6 @@ gyp ERR! stack Error: Can't find Python executable "python", you can set the PYT
 gyp ERR! node -v v5.5.0
 gyp ERR! node-gyp -v v3.3.0
 gyp ERR! not ok
-
 ```
 
 Это лечится установкой Python 2.7 (важно ставить именно эту версию, не знаю почему, но версия 3 не поддерживается!), и указанием в терминале пути к исполняемому файлу питона:
@@ -64,7 +60,6 @@ set PYTHON=C:\Users\Irina\AppData\Local\Programs\Python\Python27\python.exe
 Если не найден компилятор С++, то вы увидите ошибку **\`gyp\` failed with exit code: 1**:
 
 ```ps
-
 > node-gyp rebuild
 gyp info it worked if it ends with ok
 gyp info using node-gyp@3.3.0
@@ -94,7 +89,6 @@ gyp ERR! cwd C:\Users\Irina\Documents\project
 gyp ERR! node -v v5.5.0
 gyp ERR! node-gyp -v v3.3.0
 gyp ERR! not ok
-
 ```
 
 Чтобы ее исправить, надо поставить Visual Studio C++ 2013 Express, ссылка на нее есть в начале поста. Имейте в виду, что это огромная среда, которая займет 6,5 гигабайт (!) места на диске (в такие моменты я особенно сильно ненавижу винду - компилятор gpp на Ubuntu в установленном виде занимает всего 17Мб). После этого надо перезагрузить компьютер, и запустить node-gyp rebuild.

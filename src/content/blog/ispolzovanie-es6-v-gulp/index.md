@@ -23,11 +23,9 @@ series: ""
 5. В файле package.json (он появится после выполнения инициализации npm) добавить в раздел со скриптами команду для запуска Gulp:
     
     ```js
-    
     "scripts": {
       "gulp": "./node_modules/gulp/bin/gulp.js"
     }
-    
     ```
     
     Благодаря этому, сборка запускается командой `npm run gulp`.
@@ -44,20 +42,16 @@ series: ""
 
 ```js
 'use strict';
-<div></div>
 import gulp from 'gulp';
 import sass from 'gulp-sass';
-<div></div>
 const dirs = {
   src: 'src',
   dest: 'build'
 };
-<div></div>
 const sassPaths = {
   src: `${dirs.src}/app.scss`,
   dest: `${dirs.dest}/styles/`
 };
-<div></div>
 gulp.task('styles', () => {
   return gulp.src(paths.src)
     .pipe(sass.sync().on('error', plugins.sass.logError))
