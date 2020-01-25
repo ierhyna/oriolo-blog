@@ -53,7 +53,8 @@ series: ""
 Вроде бы все нашлось. Теперь можно установить плагины и настроить таск для сборщика Gulp. Я начну с установки плагинов, которые позволят использовать привычный синтаксис, а потом добавлю остальное.
 
 ```sh
-npm i -D gulp gulp-postcss gulp-sourcemaps autoprefixer postcss-partial-import postcss-simple-vars postcss-nested postcss-mixins 
+npm i -D gulp gulp-postcss gulp-sourcemaps autoprefixer postcss-partial-import postcss-simple-vars postcss-nested postcss-mixins
+
 ```
 
 Потестировала, все работает. Значит, можно добавить CSSNano для минификации.
@@ -66,14 +67,14 @@ npm i -D gulp-cssnano
 
 ```php
 'use strict';
-
+<div></div>
 const gulp = require('gulp');
 const sourcemaps = require('gulp-sourcemaps');
-
+<div></div>
 gulp.task('css', function () {
   const postcss = require('gulp-postcss');
   const nano = require('gulp-cssnano');
-
+<div></div>
   return gulp.src('src/css/*.css')
     .pipe( sourcemaps.init() )
     .pipe( postcss([
@@ -86,7 +87,8 @@ gulp.task('css', function () {
     .pipe(nano())
     .pipe( sourcemaps.write('.') )
     .pipe( gulp.dest('build/') );
-}); 
+});
+
 ```
 
 Теперь надо добавить линтер и инструмент для форматирования кода. Я хочу, чтобы ошибки в стилях выводились в консоли и в редакторе, поэтому надо установить [плагин Stylelint для Атома](https://atom.io/packages/linter-stylelint), настроить таск для Gulp, и создать файл конфига .stylelintrc. Устанавливается все просто.
@@ -108,9 +110,10 @@ npm i -D gulp-stylelint && apm install linter-stylelint
 Таск для линтера стилей получился такой:
 
 ```php
- gulp.task('lint-css', function () {
-  const stylelint = require('gulp-stylelint');
 
+gulp.task('lint-css', function () {
+  const stylelint = require('gulp-stylelint');
+<div></div>
   return gulp.src('src/**/*.css')
     .pipe(stylelint({
       failAfterError: false, // disable fail after error
@@ -119,7 +122,8 @@ npm i -D gulp-stylelint && apm install linter-stylelint
         console: true
       }]
     }));
-}); 
+});
+
 ```
 
 Добавим инструмент для форматирования кода. Тут, на самом деле, я не до конца разобралась, может ли плагин для Атома работать без установленного npm-пакета.

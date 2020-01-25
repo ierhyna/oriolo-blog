@@ -41,7 +41,7 @@ $args = array(
 	'pad_counts' => true
 );
 $catlist = get_categories($args); // получаем список рубрик
-
+<div></div>
 foreach($catlist as $categories_item)
 	{
 	// получаем данные из плагина Taxonomy Images

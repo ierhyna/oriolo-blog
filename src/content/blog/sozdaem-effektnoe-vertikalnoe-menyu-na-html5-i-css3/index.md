@@ -18,16 +18,16 @@ series: ""
 
 Сначала давайте создадим пустой HTML5 документ:
 
-```
+```html
 
 
 
     
-        
+        <meta charset="utf-8">
  
-        Vertical Navigation Menu: CSS3 Coded
+        <title>Vertical Navigation Menu: CSS3 Coded</title>
  
-        
+        <link rel="stylesheet" href="css/styles.css">
  
     
 
@@ -39,67 +39,67 @@ series: ""
 
 А теперь - разметку самого меню; ненумерованный список, содержащийся внутри контейнера:
 
-```
+```html
 
-
+<div id="wrapper">
  
-    
-        Friends 340
-        Videos 147
-        Galleries 340
-        Podcasts 222
-        Robots 16
-    
+    <ul class="menu">
+        <li class="item1"><a href="#">Friends <span>340</span></a></li>
+        <li class="item2"><a href="#">Videos <span>147</span></a></li>
+        <li class="item3"><a href="#">Galleries <span>340</span></a></li>
+        <li class="item4"><a href="#">Podcasts <span>222</span></a></li>
+        <li class="item5"><a href="#">Robots <span>16</span></a></li>
+    </ul>
  
-
+</div>
 
 ```
 
 Наконец, мы добавим подпункты путем создания ненумерованного списка в каждом из пунктов меню:
 
-```
+```html
 
-
+<div id="wrapper">
  
-    
-        Friends 340
-            
-                Cute Kittens 14
-                Strange “Stuff” 6
-                Automatic Fails 2
-            
-        
-        Videos 147
-            
-                Cute Kittens 14
-                Strange “Stuff” 6
-                Automatic Fails 2
-            
-        
-        Galleries 340
-            
-                Cute Kittens 14
-                Strange “Stuff” 6
-                Automatic Fails 2
-            
-        
-        Podcasts 222
-            
-                Cute Kittens 14
-                Strange “Stuff” 6
-                Automatic Fails 2
-            
-        
-        Robots 16
-            
-                Cute Kittens 14
-                Strange “Stuff” 6
-                Automatic Fails 2
-            
-        
-    
+    <ul class="menu">
+        <li class="item1"><a href="#">Friends <span>340</span></a>
+            <ul>
+                <li class="subitem1"><a href="#">Cute Kittens <span>14</span></a></li>
+                <li class="subitem2"><a href="#">Strange “Stuff” <span>6</span></a></li>
+                <li class="subitem3"><a href="#">Automatic Fails <span>2</span></a></li>
+            </ul>
+        </li>
+        <li class="item2"><a href="#">Videos <span>147</span></a>
+            <ul>
+                <li class="subitem1"><a href="#">Cute Kittens <span>14</span></a></li>
+                <li class="subitem2"><a href="#">Strange “Stuff” <span>6</span></a></li>
+                <li class="subitem3"><a href="#">Automatic Fails <span>2</span></a></li>
+            </ul>
+        </li>
+        <li class="item3"><a href="#">Galleries <span>340</span></a>
+            <ul>
+                <li class="subitem1"><a href="#">Cute Kittens <span>14</span></a></li>
+                <li class="subitem2"><a href="#">Strange “Stuff” <span>6</span></a></li>
+                <li class="subitem3"><a href="#">Automatic Fails <span>2</span></a></li>
+            </ul>
+        </li>
+        <li class="item4"><a href="#">Podcasts <span>222</span></a>
+            <ul>
+                <li class="subitem1"><a href="#">Cute Kittens <span>14</span></a></li>
+                <li class="subitem2"><a href="#">Strange “Stuff” <span>6</span></a></li>
+                <li class="subitem3"><a href="#">Automatic Fails <span>2</span></a></li>
+            </ul>
+        </li>
+        <li class="item5"><a href="#">Robots <span>16</span></a>
+            <ul>
+                <li class="subitem1"><a href="#">Cute Kittens <span>14</span></a></li>
+                <li class="subitem2"><a href="#">Strange “Stuff” <span>6</span></a></li>
+                <li class="subitem3"><a href="#">Automatic Fails <span>2</span></a></li>
+            </ul>
+        </li>
+    </ul>
  
-
+</div>
 
 ```
 
@@ -109,7 +109,7 @@ series: ""
 
 Для начала убедимся, что меню отображается правильно. Добавим следующие правла в файл `css/styles.css`. Они установят для списка отступы равные нулю, и удалят стиль списка:
 
-```
+```css
 
 ul,
 ul ul {
@@ -126,7 +126,7 @@ ul ul {
 
 Указание размера шрифтов (и элементов страницы) в em делает их "резиновыми". Если мы изменим размер контейнера (или шрифта по-умолчанию в браузере), то размер меню будет к нему подстраиваться. Если вам нужна помощь в переводе из px в em, то я советую воспользоваться сервисом [pxtoem.com](http://pxtoem.com "pxtoem.com").
 
-```
+```css
 
 body {
     font-size: 100%;
@@ -158,7 +158,7 @@ ul ul {
 
 Мы добавим CSS3 градиент для фона, потом поменяем шрифт (будем использовать Helvetica Neue) и добавим белую тень для шрифта. Обратите внимание, мы не используем font-size; так как мы установили размер шрифта для контейнера (в 13px), то он будет наследоваться.
 
-```
+```css
 
 body {
     font-size: 100%;
@@ -213,7 +213,7 @@ ul ul {
 
 Хорошо, теперь давайте изменим цвет фона страницы.
 
-```
+```css
 
 body {
     background:#32373d;
@@ -225,7 +225,7 @@ body {
 
 Наверное, вы уже подумали о том, что значения размеров шрифта, указанного в em, очень легко забыть. Поэтому давайте добавим комментарии в CSS, чтобы в будущем вы знали, какой размер в px использовался. Запомните формулу: **желаемый размер в px / размер родителя в px = результат в em**, и используйте символ приблизительного значения ≈ если результат был округлен.
 
-```
+```css
 
 #wrapper {
     font-size: 0.8125em;    /* 13/16 = 0.8125*/
@@ -247,7 +247,7 @@ body {
 
 Давайте также поменяем цвет шрифта на серый. Обратите внимание, мы используем `display:block`. Если бы использовался `float:left`, меню не было бы анимированным и с тенью. Также обратите внимание, на то, что для последнего элемента в подпунктах был добавлен дополнительный стиль, чтобы изменить цвет его границ.
 
-```
+```css
 
 .menu ul li a {
     background: #fff;
@@ -275,7 +275,7 @@ body {
 
 Давайте укажем стили для элементов меню при наведении на них указателя мыши, и для открытого пункта. Также мы пропишем границу для активного пункта. Мы не добавили класс active, потому что это будет происходить при помощи jQuery.
 
-```
+```css
 
 .menu > li > a:hover,
 .menu > li > a.active {
@@ -304,7 +304,7 @@ body {
 
 Используя классы каждого ul в подпунктах, мы установим нужное положение для изображения из спрайта.
 
-```
+```css
 
 .menu > li > a:before {
     content: '';
@@ -344,7 +344,7 @@ body {
 
 Снова, чтобы сделать его резиновым, мы будем использовать padding со значениями в em. Мы даже использовали em для указания border-radius (закругление углов), так как если текст будет больше, появится диспропорция.
 
-```
+```css
 
 .menu > li > a span {
     font-size: 0.857em;
@@ -381,7 +381,7 @@ body {
 
 Наконец, мы сделаем цвет ссылки при наведении на нее указателя более темным.
 
-```
+```css
 
 .menu ul > li > a span {
     font-size: 0.857em;
@@ -428,9 +428,9 @@ body {
 
 Сейчас в самый конец html-документа, перед закрывающимся тегом `body`, добавьте такой код:
 
-```
+```js
 
-
+<script type="text/javascript">
 $(function() {
  
     var menu_ul = $('.menu > li > ul'),
@@ -451,13 +451,13 @@ $(function() {
     });
  
 });
-
+</script>
 
 ```
 
 Сначала мы помещаем пункты меню и подменю в разные переменные, чтобы потом было удобно к ним обращаться:
 
-```
+```js
 
 var menu_ul = $('.menu > li > ul'),
     menu_a  = $('.menu > li > a');
@@ -466,7 +466,7 @@ var menu_ul = $('.menu > li > ul'),
 
 Затем сворачиваем все пункты меню, когда страница открывается:
 
-```
+```js
 
 menu_ul.hide();
 
@@ -474,7 +474,7 @@ menu_ul.hide();
 
 Потом мы сообщаем, что необходимо что-то сделать при нажатии на анкор:
 
-```
+```js
 
 menu_a.click(function(e) {
 
@@ -482,7 +482,7 @@ menu_a.click(function(e) {
 
 Сейчас мы предотвращаем привязку анкоров к следующим ссылкам или изменение в адресной строке. То есть, когда вы будете нажимать на пункты меню, # не будет появляться в адресной строке.
 
-```
+```js
 
 e.preventDefault();
 
@@ -490,7 +490,7 @@ e.preventDefault();
 
 Далее укажем, что если у `menu_a` класс `active`, его надо удалить.
 
-```
+```js
 
 if(!$(this).hasClass('active')) {
     menu_a.removeClass('active');
@@ -499,7 +499,7 @@ if(!$(this).hasClass('active')) {
 
 Тут мы используем `.filter` и `:visible`. Если меню открыто, то его надо сдвинуть вверх с нормальной скоростью.
 
-```
+```js
 
 menu_ul.filter(':visible').slideUp('normal');
 
@@ -507,7 +507,7 @@ menu_ul.filter(':visible').slideUp('normal');
 
 Если меню открыто, то добавим класс `active`, и сдвинем его вниз с нормальной скоростью.
 
-```
+```js
 
 $(this).addClass('active').next().stop(true,true).slideDown('normal');
 
@@ -515,7 +515,7 @@ $(this).addClass('active').next().stop(true,true).slideDown('normal');
 
 Теперь, используя оператор `else`, удаляем класс `active`, и двигаем меню вверх чтобы скрыть его.
 
-```
+```js
 
 } else {
     $(this).removeClass('active');

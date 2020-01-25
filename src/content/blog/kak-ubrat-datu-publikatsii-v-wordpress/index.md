@@ -38,9 +38,11 @@ series: ""
 
 ```php
 function oriolo_posted_on() {
-	echo '![]('. get_bloginfo() ';
-	printf( __( '%4$s
-	 by [%7$s](%5$s "%6$s")  ', 'oriolo' ),
+	echo '<img alt="" src="'. get_bloginfo(">&nbsp;';
+	printf( __( '<time class="entry-date" datetime="%3$s">%4$s</time>
+	<span class="byline"><span class="sep"> by </span> <span class="author vcard">
+	<a class="url fn n" title="%6$s" href="%5$s" rel="author">%7$s</a>
+	</span></span>&nbsp;', 'oriolo' ),
 		esc_url( get_permalink() ),
 		esc_attr( get_the_time() ),
 		esc_attr( get_the_date( 'c' ) ),
@@ -56,7 +58,9 @@ function oriolo_posted_on() {
 
 ```php
 function oriolo_posted_on() {
-	printf( __( ' by [%7$s](%5$s "%6$s")  ', 'oriolo' ),
+	printf( __( '<span class="byline"><span class="sep"> by </span> <span class="author vcard">
+	<a class="url fn n" title="%6$s" href="%5$s" rel="author">%7$s</a>
+	</span></span>&nbsp;', 'oriolo' ),
 		esc_url( get_permalink() ),
 		esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ),
 		esc_attr( sprintf( __( 'View all posts by %s', 'oriolo' ), get_the_author() ) ),

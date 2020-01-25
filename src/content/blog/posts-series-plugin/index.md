@@ -90,7 +90,7 @@ $show_count   = 0;      // 1 for yes, 0 for no
 $pad_counts   = 0;      // 1 for yes, 0 for no
 $hierarchical = 1;      // 1 for yes, 0 for no
 $title        = '';
-
+<div></div>
 $args = array(
   'taxonomy'     => $taxonomy,
   'orderby'      => $orderby,
@@ -100,7 +100,7 @@ $args = array(
   'title_li'     => $title
 );
 ?>
-
+<div></div>
 <ul>
 <?php wp_list_categories( $args ); ?>
 </ul>

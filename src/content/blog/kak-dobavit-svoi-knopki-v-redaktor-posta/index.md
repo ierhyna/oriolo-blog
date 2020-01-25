@@ -44,18 +44,18 @@ series: ""
 
 ```
 
-edButtons[10] = new qt.TagButton('strong','b','','','b');
-edButtons[20] = new qt.TagButton('em','i','','','i'),
+edButtons[10] = new qt.TagButton('strong','b','<strong>','</strong>','b');
+edButtons[20] = new qt.TagButton('em','i','<em>','</em>','i'),
 edButtons[30] = new qt.LinkButton(), // special case
-edButtons[40] = new qt.TagButton('block','b-quote','\n\n','\n\n','q'),
-edButtons[50] = new qt.TagButton('del','del','','','d'),
-edButtons[60] = new qt.TagButton('ins','ins','','','s'),
+edButtons[40] = new qt.TagButton('block','b-quote','\n\n<blockquote>','</blockquote>\n\n','q'),
+edButtons[50] = new qt.TagButton('del','del','<del datetime="' + _datetime + '">','</del>','d'),
+edButtons[60] = new qt.TagButton('ins','ins','<ins datetime="' + _datetime + '">','</ins>','s'),
 edButtons[70] = new qt.ImgButton(), // special case
-edButtons[80] = new qt.TagButton('ul','ul','\n','\n\n','u'),
-edButtons[90] = new qt.TagButton('ol','ol','\n','\n\n','o'),
-edButtons[100] = new qt.TagButton('li','li','\t','\n','l'),
-edButtons[110] = new qt.TagButton('code','code','','','c'),
-edButtons[120] = new qt.TagButton('more','more','','','t'),
+edButtons[80] = new qt.TagButton('ul','ul','<ul>\n','</ul>\n\n','u'),
+edButtons[90] = new qt.TagButton('ol','ol','<ol>\n','</ol>\n\n','o'),
+edButtons[100] = new qt.TagButton('li','li','\t<li>','</li>\n','l'),
+edButtons[110] = new qt.TagButton('code','code','<code>','</code>','c'),
+edButtons[120] = new qt.TagButton('more','more','<!--more-->','','t'),
 edButtons[130] = new qt.SpellButton(),
 edButtons[140] = new qt.CloseButton(),
 
@@ -65,7 +65,7 @@ edButtons[140] = new qt.CloseButton(),
 
 ```
 
-edButtons[150] = new qt.TagButton('span','span','','','span')
+edButtons[150] = new qt.TagButton('span','span','<span>','</span>','span')
 
 ```
 

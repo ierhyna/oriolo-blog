@@ -22,15 +22,13 @@ series: ""
 Для начала, в папке с вашей темой найдите файл functions.php. Убедитесь, что функции get\_search\_form там нет. Это можно сделать через поиск. Теперь добавьте следующее:
 
 ```php
- function search_form( $form ) {
-	$form = '
 
-	' . __('Найти:') . '
-	
-	
-	
-
-';
+function search_form( $form ) {
+	$form = '<form role="search" method="get" id="searchform" action="' . home_url( '/' ) . '">
+	<label for="s">' . __('Найти:') . '</label>
+	<input type="search" placeholder="'.__(" Поиск").'"="" value="' . get_search_query() . '" name="s" id="s">
+	<input type="submit" id="searchsubmit" value="Поиск">
+	</form>';
  
 	return $form;
 }
@@ -83,7 +81,8 @@ input#s {
 ```css
 input#s {
 	background: url("images/search.png") no-repeat scroll 5px 2px #FFFFFF;
-	padding: 0px 10px 0px 25px; 
+	padding: 0px 10px 0px 25px;
+
 ```
 
 Padding нужен для того, чтобы вводимый текст начинался после изображения.
@@ -94,7 +93,8 @@ Padding нужен для того, чтобы вводимый текст на�
 input#s {
 	border-radius: 5px; /* закругляем уголки на 5px */
 	-webkit-border-radius: 5px; /* закругляем уголки для webkit */
-	-moz-border-radius: 5px; /* закругляем уголки для firefox */ 
+	-moz-border-radius: 5px; /* закругляем уголки для firefox */
+
 ```
 
 В итоге, стили для поля input должны выглядеть так:
@@ -144,7 +144,7 @@ input#s:focus {
 #searchsubmit {
 	display: none;
 }
-
+<div></div>
 #searchform label {
 	display: none;
 }

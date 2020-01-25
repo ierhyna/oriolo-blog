@@ -33,19 +33,19 @@ function oriolo_pagination($pages = '', $range = 2)
      }
      if(1 != $pages)
      { 
-         echo " ". __('Pages:', 'existentia') ." ";
-         if($paged > 2 && $paged > $range+1 && $showitems < $pages) echo "«";
-         if($paged > 1 && $showitems < $pages) echo "‹";
+         echo "<div class="clearfix navigation-top"><div class="pagination"><span> ". __('Pages:', 'existentia') ." </span>";
+         if($paged > 2 && $paged > $range+1 && $showitems < $pages) echo "<a href="".get_pagenum_link(1)."">«</a>";
+         if($paged > 1 && $showitems < $pages) echo "<a href="".get_pagenum_link($paged - 1)."">‹</a>";
          for ($i=1; $i <= $pages; $i++)
          {
              if (1 != $pages &&( !($i >= $paged+$range+1 || $i <= $paged-$range-1) || $pages <= $showitems ))
              {
-                 echo ($paged == $i)? "".$i."":"".$i."";
+                 echo ($paged == $i)? "<span class="current">".$i."</span>":"<a href="".get_pagenum_link($i)."" class="inactive">".$i."</a>";
              }
          }
-         if ($paged < $pages && $showitems < $pages) echo "›";
-         if ($paged < $pages-1 &&  $paged+$range-1 < $pages && $showitems < $pages) echo "»";
-         echo "\n";
+         if ($paged < $pages && $showitems < $pages) echo "<a href="".get_pagenum_link($paged + 1)."">›</a>";
+         if ($paged < $pages-1 &&  $paged+$range-1 < $pages && $showitems < $pages) echo "<a href="".get_pagenum_link($pages)."">»</a>";
+         echo "</div></div>\n";
      }
 }
 
@@ -53,14 +53,14 @@ function oriolo_pagination($pages = '', $range = 2)
 
 Теперь в то место шаблона, где нужно высвести постраничную навигацию, вставляем код для вызова функции:
 
-```
+```php
 if (function_exists('oriolo_pagination')) oriolo_pagination(); 
 else posts_nav_link();
 ```
 
 После этого, на главной странице блога, при наличии достаточного количества записей, должны появиться цифры с номерами страниц. Теперь давайте оформим созданную постраничную навигацию при помощи стилей:
 
-```
+```css
 /* pagination */
 .pagination
 {

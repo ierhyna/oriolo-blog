@@ -17,7 +17,7 @@ series: "create-wp-theme-from-html"
 ```php
 // Register Sidebar
 function striped_sidebar() {
-
+<div></div>
 	$args = array(
 		'id'            => 'sidebar-left',
 		'name'          => __( 'Sidebar', 'striped' ),
@@ -29,11 +29,12 @@ function striped_sidebar() {
 		'after_widget'  => '</div>',
 	);
 	register_sidebar( $args );
-
+<div></div>
 }
-
+<div></div>
 // Hook into the 'widgets_init' action
-add_action( 'widgets_init', 'striped_sidebar' ); 
+add_action( 'widgets_init', 'striped_sidebar' );
+
 ```
 
 Немного о возможных аргументах:
@@ -84,7 +85,7 @@ add_action( 'widgets_init', 'striped_sidebar' );
 Сначала посмотрим, как выводятся виджеты в верстке. Они обернуты в тег `section`, а заголовки виджетов - в `header`. Сделаем также в нашей теме, внесем измерения в `'before_title'` и `'after_title'`, `'before_widget'` и `'after_widget'`:
 
 ```php
- $args = array(
+	$args = array(
 		'id'            => 'sidebar-left',
 		'name'          => __( 'Sidebar', 'striped' ),
 		'description'   => __( 'Left Sidebar', 'striped' ),
