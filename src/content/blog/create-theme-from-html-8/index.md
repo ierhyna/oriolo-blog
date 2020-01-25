@@ -16,7 +16,7 @@ series: "create-wp-theme-from-html"
 
 Для начала, давайте немного оптимизируем структуру файла index.php. Как вы уже знаете, это основной шаблон темы для вордпресс, и именно он будет срабатывать, если более подходящий шаблон не найден. Сейчас в этом файле содержится достаточно большая часть кода, которая отвечает за вывод содержимого записи. Вот она:
 
-```
+```php
 <!-- Post Start -->
 	<article class="is-post is-post-excerpt" class="<?php post_class(); ?>" id="post-<?php the_ID(); ?>">
 		<header>
@@ -50,13 +50,13 @@ the_post_thumbnail();
 
 Именно эта часть кода отрабатывает на всех страницах темы, где есть хоть какое-то содержимое. Поэтому, чтобы упроситить дальнейшую работу над темой, этот кусок кода нужно **вынести в отдельный файл**, который будет называться **content.php**. Копируем, вставляем, удаляем эту часть в index.php :) Сейчас нужно подключить вывод этого фрагмента. Сделаем это при помощи функции `get_template_part()`:
 
-```
+```php
 <?php get_template_part('content') ?>
 ```
 
 В итоге, файл index.php будет выглядеть вот так:
 
-```
+```php
 <?php get_header(); ?>
 <?php while ( have_posts() ) : the_post(); ?>
 <?php get_template_part('content') ?>
@@ -78,7 +78,7 @@ else posts_nav_link();
 
 Теперь создайте копию файла index.php и переименуйте ее в single.php. Сделаем небольшие изменения в этом файле. Для начала, удалим оттуда вывод постраничной навигации, так как она все равно не будет использоваться на этой странице. В итоге, файл single.php должен получиться таким:
 
-```
+```php
 <?php get_header(); ?>
 <?php while ( have_posts() ) : the_post(); ?>
 <?php get_template_part('content') ?>
@@ -95,16 +95,15 @@ else posts_nav_link();
 
 А теперь начинается магия :) Создайте копию файла content.php, и назовите ее content-single.php. Затем поменяйте функцию `get_template_part` в файле single.php, чтобы она выглядела вот так:
 
-```
-
-<?php get_template_part('content', 'single') ?>
+```php
+ <?php get_template_part('content', 'single') ?>
 ```
 
 Этим мы сделаем так, чтобы на странице одиночной записи содержимое выводилось из файла content-single.php.
 
 И далее, уже в файле content-single.php, перед закрывающим тегом `article`, добавляем:
 
-```
+```php
 <footer class="entry-meta">
 	<?php edit_post_link( __( 'Edit', 'striped' ), '<div class="edit-link">', '</div>' ); ?>
 	<p class="tags"><?php the_tags(__( 'Tagged as: ', 'striped' ),', '); ?></p>
@@ -124,7 +123,7 @@ else posts_nav_link();
 
 Следующим, и наверное самым сложным шагом, будет вывод комментариев для записи. Во-первых, откройте файл single.php, и сразу после `get_template_part` добавьте эту функцию:
 
-```
+```php
 <?php // If comments are open or we have at least one comment, load up the comment template.
  if ( comments_open() || '0' != get_comments_number() ) :
  	comments_template();
@@ -140,7 +139,7 @@ else posts_nav_link();
 
 Создадим в этом файле блок, в котором будет выводится список комментариев:
 
-```
+```php
 <div id="comments">
 
 </div><!-- #comments -->
@@ -148,9 +147,8 @@ else posts_nav_link();
 
 Сначала давайте проверим, не защищена ли запись паролем.:
 
-```
-
-<div id="comments">
+```php{2-13}
+ <div id="comments">
 <?php if ( post_password_required() ) : ?>
 				<p class="nopassword"><?php _e( 'This post is password protected. Enter the password to view any comments.', 'striped' ); ?></p>
 			</div><!-- #comments -->
@@ -163,15 +161,13 @@ else posts_nav_link();
 		return;
 	endif;
 ?>
-</div><!-- #comments -->
-
+</div><!-- #comments --> 
 ```
 
 Потом проверим, есть ли к записи коммментарии:
 
-```
-
-<div id="comments">
+```php{14-16}
+ <div id="comments">
 <?php if ( post_password_required() ) : ?>
 				<p class="nopassword"><?php _e( 'This post is password protected. Enter the password to view any comments.', 'striped' ); ?></p>
 			</div><!-- #comments -->
@@ -187,13 +183,12 @@ else posts_nav_link();
 <?php if ( have_comments() ) : ?>
 
 <?php endif; // end have_comments() ?>
-</div><!-- #comments -->
-
+</div><!-- #comments --> 
 ```
 
 Если комментарии есть, то их нужно вывести:
 
-```
+```php{15-19}
 <ol class="commentlist">
 	<?php
 	wp_list_comments();
@@ -203,7 +198,7 @@ else posts_nav_link();
 
 Теперь добавим заголовок для списка комментариев. Он будет содержать число комментариев и название записи:
 
-```
+```php
 <h3 id="comments-title">
 <?php
 printf( _n( 'One Response to %2$s', '%1$s Responses to %2$s', get_comments_number(), 'striped' ),
@@ -214,7 +209,7 @@ number_format_i18n( get_comments_number() ), '<em>' . get_the_title() . '</em>' 
 
 Также нужно добавить постраничную навигацию, она будет появляться, если страниц с комментариями много. Для этого добавим такой код до и после вывода списка комментариев:
 
-```
+```php
 <?php if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : // Are there comments to navigate through? ?>
 			<div class="navigation">
 				<div class="nav-previous"><?php previous_comments_link( __( '<span class="meta-nav">&larr;</span> Older Comments', 'striped' ) ); ?></div>
@@ -225,8 +220,8 @@ number_format_i18n( get_comments_number() ), '<em>' . get_the_title() . '</em>' 
 
 Ну и напоследок сделаем уведомление на случай, если комментариев к записи нет, и комментирование запрещено:
 
-```
-	<?php
+```php
+ <?php
 	/*
 	 * If there are no comments and comments are closed, let's leave a little note.
 	 */
@@ -238,7 +233,7 @@ number_format_i18n( get_comments_number() ), '<em>' . get_the_title() . '</em>' 
 
 В итоге, содержание файла comments.php должно получиться примерно следующее:
 
-```
+```php
 <div id="comments">
 <?php if ( post_password_required() ) : ?>
 				<p class="nopassword"><?php _e( 'This post is password protected. Enter the password to view any comments.', 'striped' ); ?></p>
@@ -300,10 +295,8 @@ number_format_i18n( get_comments_number() ), '<em>' . get_the_title() . '</em>' 
 
 Вывести форму для добавления комментариев можно при помощи функции `comment_form`:
 
-```
-
-<?php comment_form(); ?>
-
+```php
+ <?php comment_form(); ?> 
 ```
 
 Добавьте эту функцию в конце файла comments.php до закрывающего тега `div`.
@@ -316,7 +309,7 @@ number_format_i18n( get_comments_number() ), '<em>' . get_the_title() . '</em>' 
 
 В самом общем виде, минимальное оформление списка комментариев будет таким. В отмеченные строки я внесла изменения, остальные привожу, если вы захотите самостоятельно что-то поменять. В принципе, копировать все это оформление необязательно, можно ограничиться только необходимыми вам строками, или, в самом минимальном варианте, выделенными строками?
 
-```
+```php{1,2,10,12,18,20,23,30-32}
 ol.commentlist { list-style:none; margin:0 0 1em; padding:0; }
 ol.commentlist li { margin:0 0 1em 0; }
 ol.commentlist li.alt { }
@@ -367,7 +360,7 @@ ol.commentlist li.thread-odd {}
 
 Там есть вот такой список, который выводится слева от заголовка записи рядом с датой:
 
-```
+```php
 <ul class="stats">
 	<li><a href="#" class="fa fa-comment">16</a></li>
 	<li><a href="#" class="fa fa-heart">32</a></li>
@@ -378,7 +371,7 @@ ol.commentlist li.thread-odd {}
 
 Заменим первую строку, чтобы получилось вот так:
 
-```
+```php{2}
 <ul class="stats">
 	<li><a href="<?php echo get_comments_link(); ?>" class="fa fa-comment"><?php echo get_comments_number(); ?></a></li>
 	<li><a href="#" class="fa fa-heart">32</a></li>

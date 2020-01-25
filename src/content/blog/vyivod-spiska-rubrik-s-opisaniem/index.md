@@ -40,8 +40,7 @@ $args = array(
 $catlist = get_categories($args);
 foreach ($catlist as $categories_item) {
 	echo "<li><a href=\"#\">" . $categories_item->cat_name . "</a><br><span class=\"small-text\">" . $categories_item->category_description . "</span></li>";
-}
-
+} 
 ```
 
 В этом примере выводятся только родительские рубрики, даже если в них не содержатся записи, за исключением рубрики с ID=21, и возле каждой рубрики отображается количество записей в ней. Ниже рубрики выводится текст ее описания.

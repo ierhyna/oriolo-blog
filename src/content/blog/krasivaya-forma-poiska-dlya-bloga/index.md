@@ -21,14 +21,16 @@ series: ""
 
 Для начала, в папке с вашей темой найдите файл functions.php. Убедитесь, что функции get\_search\_form там нет. Это можно сделать через поиск. Теперь добавьте следующее:
 
-```
-
-function search_form( $form ) {
+```php
+ function search_form( $form ) {
 	$form = '
+
 	' . __('Найти:') . '
 	
 	
-	';
+	
+
+';
  
 	return $form;
 }
@@ -49,7 +51,7 @@ add_filter( 'get_search_form', 'search_form' );
 
 Теперь надо добавить следующий код:
 
-```
+```css
 #searchform {
 	margin: 0; /* удаляем отступы */
 	vertical-align: middle; /* вертикальное выравнивание формы по середине */
@@ -63,7 +65,7 @@ add_filter( 'get_search_form', 'search_form' );
 
 Сначала пропишем основные стили input:
 
-```
+```css
 input#s {
 	border: 1px solid #DDD; /* цвет и ширина рамки */
 	color: #585858; /* цвет замещающего текста */
@@ -78,28 +80,26 @@ input#s {
 
 [![](images/search.png "search")](http://oriolo.ru/wp-content/uploads/2012/02/search.png)
 
-```
+```css
 input#s {
 	background: url("images/search.png") no-repeat scroll 5px 2px #FFFFFF;
-	padding: 0px 10px 0px 25px;
-
+	padding: 0px 10px 0px 25px; 
 ```
 
 Padding нужен для того, чтобы вводимый текст начинался после изображения.
 
 Сейчас сделаем уголки закругленными:
 
-```
+```css
 input#s {
 	border-radius: 5px; /* закругляем уголки на 5px */
 	-webkit-border-radius: 5px; /* закругляем уголки для webkit */
-	-moz-border-radius: 5px; /* закругляем уголки для firefox */
-
+	-moz-border-radius: 5px; /* закругляем уголки для firefox */ 
 ```
 
 В итоге, стили для поля input должны выглядеть так:
 
-```
+```css
 input#s {
 	background: url("images/search.png") no-repeat scroll 5px 2px #FFFFFF;
 	padding: 0px 10px 0px 25px;
@@ -119,7 +119,7 @@ input#s {
 
 Сейчас, если вы откроете вашу форму в браузере, то увидите, что при нажатии на нее, она будет подсвечиваться по контуру. Давайте уберем рамку у активного input:
 
-```
+```css
 input#s:focus {
 	outline: none;
 }
@@ -127,7 +127,7 @@ input#s:focus {
 
 Далее, можно **сделать изменяющийся размер input**, когда при нажатии на него мышкой, он будет увеличиваться влево:
 
-```
+```css
 input#s:focus {
 	outline: none;
 	width: 250px;
@@ -140,7 +140,7 @@ input#s:focus {
 
 И последнее, уберем отображение кнопки "Поиск" и надписи "Найти:".
 
-```
+```css
 #searchsubmit {
 	display: none;
 }

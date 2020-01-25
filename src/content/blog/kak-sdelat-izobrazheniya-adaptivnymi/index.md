@@ -14,7 +14,7 @@ series: ""
 
 Сначала создадим в файле стилей класс `.img-responsive`:
 
-```
+```css
 .img-responsive {
 	display: block;
 	height: auto;
@@ -24,7 +24,7 @@ series: ""
 
 Затем в файл functions.php добавим код, который добавит новый класс к изображениям:
 
-```
+```php
 // images auto class
 function add_image_responsive_class($content) {
    global $post;

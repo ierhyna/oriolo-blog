@@ -62,7 +62,7 @@ series: ""
 
 Теперь в файл, который вы только что создали, нужно вставить такой код:
 
-```
+```php{12}
 <?php
 /**
  * Plugin Name: Название плагина
@@ -76,7 +76,6 @@ series: ""
 
 // ниже начинается мой плагин
 
-
 ?>
 ```
 
@@ -86,7 +85,7 @@ series: ""
 
 Вот эта функция добавляет к посту css-класс `has_thumb`, если у поста есть миниатюра:
 
-```
+```php
 function has_thumb_class($classes) {
     global $post;
     if( has_post_thumbnail($post->ID) ) { $classes[] = 'has_thumb'; }
@@ -97,7 +96,7 @@ add_filter('post_class', 'has_thumb_class');
 
 Она очень маленькая, поэтому на ее примере удобно научиться делать плагины. Давайте это сделаем:
 
-```
+```php{12}
 <?php
 /**
  * Plugin Name: Add Image Class

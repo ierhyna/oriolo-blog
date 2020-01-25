@@ -30,7 +30,7 @@ series: ""
 
 За вывод изображения рубрик здесь отвечает `taxonomy-images-get-terms`.
 
-```
+```php
 /* вывод списка рубрик */
 $args = array(
 	'parent' => 0,

@@ -20,7 +20,7 @@ series: "create-wp-theme-from-html"
 
 Добавим определение языка пользователя для нашей темы. К тегу html, допишем следующее:
 
-```
+```php
 <html <?php language_attributes(); ?>>
 ```
 
@@ -28,13 +28,13 @@ series: "create-wp-theme-from-html"
 
 Сейчас в нашей теме заголовок страницы задан через теги title. Но ведь заголовок должен быть разным на всех страницах, правильно? Поэтому надо сделать динамический вывод заголовка. Для этого найдем строку, которая выводит заголовок:
 
-```
+```php
 <title>Simple Blog Home</title>
 ```
 
 и заменим ее на динамический вывод:
 
-```
+```php
 <title>
 <?php
 	wp_title( '|', true, 'right' );
@@ -48,13 +48,13 @@ series: "create-wp-theme-from-html"
 
 Также сделаем автоматическое определение кодировки. Замените строку
 
-```
+```php
 <meta charset="UTF-8">
 ```
 
 на
 
-```
+```php
 <meta charset="<?php bloginfo( 'charset' ); ?>" />
 ```
 
@@ -62,7 +62,7 @@ series: "create-wp-theme-from-html"
 
 Теперь, перед закрывающим тегом head, добавим функцию wp\_head, которая будет загружать стандартные скрипты, стили, мета-теги и другую важную информацию:
 
-```
+```php
 <?php wp_head(); ?>
 ```
 
@@ -70,8 +70,8 @@ series: "create-wp-theme-from-html"
 
 После добавления wp\_head, нам больше не нужны другие мета-теги, кроме тега определения кодировки, поэтому если они есть, удалим их:
 
-```
-      <meta name="description" content="" />
+```php
+ <meta name="description" content="" />
       <meta name="keywords" content="" />
 ```
 
@@ -79,13 +79,13 @@ series: "create-wp-theme-from-html"
 
 Кроме этого, нужно добавить стандартные классы для тега body. Сейчас он у нас выглядит так:
 
-```
+```php
 <body>
 ```
 
 Добавим классы через функцию body\_class();
 
-```
+```php
 <body <?php body_class(); ?>>
 ```
 

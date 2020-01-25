@@ -14,7 +14,7 @@ series: "create-wp-theme-from-html"
 
 Чтобы **добавить к теме поддержку виджетов**, необходимо зарегистрироват боковую колонку при помощи функции `register_sidebar()`. Давайте добавим сайдбар со всеми возможными параметрами в начало файла functions.php:
 
-```
+```php
 // Register Sidebar
 function striped_sidebar() {
 
@@ -33,8 +33,7 @@ function striped_sidebar() {
 }
 
 // Hook into the 'widgets_init' action
-add_action( 'widgets_init', 'striped_sidebar' );
-
+add_action( 'widgets_init', 'striped_sidebar' ); 
 ```
 
 Немного о возможных аргументах:
@@ -45,7 +44,7 @@ add_action( 'widgets_init', 'striped_sidebar' );
 
 Теперь для того, чтобы отобразить сайдбар в теме, необходимо в файл sidebar.php добавить вызов. Обратите внимание, что обязательно нужно указать ID сайдбара, его мы задали в функции вверху:
 
-```
+```php
 <?php if ( ! dynamic_sidebar('sidebar-left') ) : ?>
 <!-- тут будет содержимое сайдбара, которое выведется, если в него не поместили виджеты -->
 <?php endif; ?>
@@ -53,7 +52,7 @@ add_action( 'widgets_init', 'striped_sidebar' );
 
 Добавьте первую строку после вывода логотипа:
 
-```
+```php
 <!-- Logo -->
 <div id="logo">
 <h1>STRIPED</h1>
@@ -63,7 +62,7 @@ add_action( 'widgets_init', 'striped_sidebar' );
 
 А вторую строку перед копирайтом:
 
-```
+```php
 <?php endif; ?>
 ```
 
@@ -84,8 +83,8 @@ add_action( 'widgets_init', 'striped_sidebar' );
 
 Сначала посмотрим, как выводятся виджеты в верстке. Они обернуты в тег `section`, а заголовки виджетов - в `header`. Сделаем также в нашей теме, внесем измерения в `'before_title'` и `'after_title'`, `'before_widget'` и `'after_widget'`:
 
-```
-	$args = array(
+```php
+ $args = array(
 		'id'            => 'sidebar-left',
 		'name'          => __( 'Sidebar', 'striped' ),
 		'description'   => __( 'Left Sidebar', 'striped' ),
@@ -119,7 +118,7 @@ add_action( 'widgets_init', 'striped_sidebar' );
 
 Самым простым является использование отдельного файла в теме для вывода формы. Нам нужно создать в папке темы новый файл с именем searchform.php со следующим содержанием:
 
-```
+```php
 <form role="search" method="get" class="search-form" action="<?php echo home_url( '/' ); ?>">
 	<input type="search" class="search-field" placeholder="Поиск" value="" name="s" title="Поиск:" />
 </form>
@@ -133,7 +132,7 @@ add_action( 'widgets_init', 'striped_sidebar' );
 
 Сейчас меню выводится в верстке вот таким кодом:
 
-```
+```php
 <!-- Nav -->
 <nav id="nav">
 	<ul>
@@ -147,7 +146,7 @@ add_action( 'widgets_init', 'striped_sidebar' );
 
 А вордпресс сгенерировал такой код для меню:
 
-```
+```php
 <section id="nav_menu-2" class="widget widget_nav_menu">
   <div class="menu-1-container">
     <ul id="menu-1" class="menu">
@@ -187,7 +186,7 @@ add_action( 'widgets_init', 'striped_sidebar' );
 
 Сделаем вывод названия блога в боковой колонке. Вместо статичного кода:
 
-```
+```php
 <!-- Logo -->
 <div id="logo">
   <h1>
@@ -198,7 +197,7 @@ add_action( 'widgets_init', 'striped_sidebar' );
 
 Вставьте:
 
-```
+```php
 <!-- Logo -->
 <div id="logo">
   <h1>
@@ -209,7 +208,7 @@ add_action( 'widgets_init', 'striped_sidebar' );
 
 И заодно сделаем вывод названия блога в копирайтах. В файле sidebar.php, вместо этого:
 
-```
+```php
 <!-- Copyright -->
 <div id="copyright">
   <p>
@@ -234,7 +233,7 @@ add_action( 'widgets_init', 'striped_sidebar' );
 
 Вставьте:
 
-```
+```php
 <!-- Copyright -->
 <div id="copyright">
   <p>
