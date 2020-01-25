@@ -86,7 +86,7 @@ add_shortcode( 'member', 'member_check_shortcode' );
 
 function sc_note( $atts, $content = null ) {  
      if ( current_user_can( 'publish_posts' ) )  
-        return ''.$content.'';  
+        return '<div class="note">'.$content.'</div>';  
     return '';  
 }  
 add_shortcode( 'note', 'sc_note' ); 
@@ -102,7 +102,7 @@ add_shortcode( 'note', 'sc_note' );
 
 function munge_mail_shortcode( $atts , $content=null ) {  
     for ($i = 0; $i < strlen($content); $i++) $encodedmail .= "&#" . ord($content[$i]) . ';';   
-    return ''.$encodedmail.'';  
+    return '<a href="mailto:'.$encodedmail.'">'.$encodedmail.'</a>';  
 }  
 add_shortcode('mailto', 'munge_mail_shortcode');
 
@@ -117,7 +117,7 @@ add_shortcode('mailto', 'munge_mail_shortcode');
 ```
 
 add_shortcode('wcs_count', 'wcs_count_shortcode_handler');
-
+<div></div>
 function wcs_count_shortcode_handler($atts)
 {
     // extract parameters
@@ -126,21 +126,21 @@ function wcs_count_shortcode_handler($atts)
         'format' => 'true',
         'extra' => '1',
         ), $atts);
-
+<div></div>
     $type = strtolower($parms['type']);
     $format = strtolower($parms['format']);
     $extra = $parms['extra'];
-
+<div></div>
     // process t/f options
     $b_format = false;
     if (($format == 'yes') || ($format == 'y') ||
         ($format == 'true') || ($format == '1'))
     {$b_format = true;}
-
+<div></div>
     // exit
     return wcs_get_count($type, $b_format, $extra);
 }
-
+<div></div>
 function wcs_get_count($type='posts', $format='1', $extra='1')
 {
     // TYPES:
@@ -149,16 +149,16 @@ function wcs_get_count($type='posts', $format='1', $extra='1')
     // comments, comments_pending, comments_spam, comments_pingback
     // comments_by_user, comments_by_nicename, comments_by_email
     // comments_per_post
-
+<div></div>
     // $extra is used with:
     // posts_by_author, comments_by_user, comments_by_nicename, comments_by_email
     // comments_per_post
-
+<div></div>
     // init
     global $wpdb;
     $type = strtolower($type);
     $count = 0;
-
+<div></div>
     // process
     switch($type)
     {
@@ -167,7 +167,7 @@ function wcs_get_count($type='posts', $format='1', $extra='1')
         $count = $count->publish;
         // options: publish, future, draft, pending, private, trash, auto-draft, & inherit
         break;
-
+<div></div>
         case 'posts_by_author': // use $extra for user/author id
         case 'posts_by_user':
         $query = "SELECT COUNT(*) FROM $wpdb->posts ";
@@ -175,63 +175,63 @@ function wcs_get_count($type='posts', $format='1', $extra='1')
         $count = $wpdb->get_var($query . $where);
         // alternative method is: count_user_posts()
         break;
-
+<div></div>
         case 'pages': // published
         $count = wp_count_posts('page');
         $count = $count->publish;
         break;
-
+<div></div>
         case 'tags':
         $count = wp_count_terms('post_tag');
         break;
-
+<div></div>
         case 'categories':
         $count = wp_count_terms('category');
         break;
-
+<div></div>
         case 'users':
         $count = count_users();
         $count = $count['total_users'];
         break;
-
+<div></div>
         case 'ms_users': // multi-site
         $count = get_user_count();
         break;
-
+<div></div>
         case 'blogroll':
         $query = "SELECT COUNT(*) FROM $wpdb->links ";
         $where = "WHERE link_visible='Y'";
         $count = $wpdb->get_var($query . $where);
         break;
-
+<div></div>
         case 'blogroll_categories':
         $count = wp_count_terms('link_category');
         break;
-
+<div></div>
         case 'commenters':
         $query = "SELECT COUNT(DISTINCT comment_author) FROM $wpdb->comments ";
         $where = "WHERE comment_approved='1' AND comment_type=''";
         $count = $wpdb->get_var($query . $where);
         break;
-
+<div></div>
         case 'comments':
         $query = "SELECT COUNT(*) FROM $wpdb->comments ";
         $where = "WHERE comment_approved='1' AND comment_type=''";
         $count = $wpdb->get_var($query . $where);
         break;
-
+<div></div>
         case 'comments_pending':
         $query = "SELECT COUNT(*) FROM $wpdb->comments ";
         $where = "WHERE comment_approved='0' AND comment_type=''";
         $count = $wpdb->get_var($query . $where);
         break;
-
+<div></div>
         case 'comments_spam':
         $query = "SELECT COUNT(*) FROM $wpdb->comments ";
         $where = "WHERE comment_approved='spam' AND comment_type=''";
         $count = $wpdb->get_var($query . $where);
         break;
-
+<div></div>
         case 'comments_pingback':
         case 'comments_pingbacks':
         case 'comments_trackback':
@@ -240,26 +240,26 @@ function wcs_get_count($type='posts', $format='1', $extra='1')
         $where = "WHERE comment_approved='1' AND comment_type='pingback'";
         $count = $wpdb->get_var($query . $where);
         break;
-
+<div></div>
         case 'comments_by_user': // use $extra for user_id
         $query = "SELECT COUNT(*) FROM $wpdb->comments ";
         $where = "WHERE comment_approved='1' AND comment_type='' AND user_id='$extra'";
         $count = $wpdb->get_var($query . $where);
         break;
-
+<div></div>
         case 'comments_by_author': // use $extra for author nicename (case INsensitive)
         case 'comments_by_nicename':
         $query = "SELECT COUNT(*) FROM $wpdb->comments ";
         $where = "WHERE comment_approved='1' AND comment_type='' AND comment_author='$extra'";
         $count = $wpdb->get_var($query . $where);
         break;
-
+<div></div>
         case 'comments_by_email': // use $extra for author email (case INsensitive)
         $query = "SELECT COUNT(*) FROM $wpdb->comments ";
         $where = "WHERE comment_approved='1' AND comment_type='' AND comment_author_email='$extra'";
         $count = $wpdb->get_var($query . $where);
         break;
-
+<div></div>
         case 'comments_per_post': // $extra is decimal place precision (0 for integer only)
         // posts
         $posts_count = wp_count_posts('post');
@@ -270,15 +270,15 @@ function wcs_get_count($type='posts', $format='1', $extra='1')
         $comment_count = $wpdb->get_var($query . $where);
         // average
         return round($comment_count / $posts_count, $extra);
-
+<div></div>
         default:
         $count = 0;
     }
-
+<div></div>
     // exit
     if ($format) {$count = number_format_i18n($count);}
     return $count;
-
+<div></div>
     /**********************************************************************
      Copyright © 2011 Gizmo Digital Fusion (http://wpCodeSnippets.info)
      you can redistribute and/or modify this code under the terms of the
@@ -304,9 +304,9 @@ function content_countdown($atts, $content = null){
     ), $atts));
     $remain = ceil((mktime( 0,0,0,(int)$month,(int)$day,(int)$year) - time())/86400);
     if( $remain > 1 ){
-        return $daysremain = "Осталось дней до появления - ($remain)";
+        return $daysremain = "<div class="\"event\"">Осталось дней до появления - <strong>($remain)</strong></div>";
     }else if($remain == 1 ){
-    return $daysremain = "Остался всего ($remain) день до появления";
+    return $daysremain = "<div class="\"event\"">Остался всего <strong>($remain)</strong> день до появления</div>";
     }else{
         return $content;
     }
@@ -324,7 +324,7 @@ add_shortcode('cdt', 'content_countdown');
 ```
 
 function pdflink($attr, $content) {
-	return ''.$content.'';
+	return '<a class="pdf" href="http://docs.google.com/viewer?url=' . $attr['href'] . '">'.$content.'</a>';
 }
 add_shortcode('pdf', 'pdflink');
 
@@ -346,7 +346,7 @@ function youtube($atts) {
         "allowScriptAccess"=>'always',
         "controls"=> '1',
     ), $atts));
-    return '';
+    return '<object style="height: '.$height.'px; width: '.$width.'px"><param name="'.$name.'" value="'.$value.'"><param name="allowFullScreen" value="'.$allowFullScreen.'"><param name="allowScriptAccess" value="'.$allowScriptAccess.'"><embed src="'.$value.'" type="application/x-shockwave-flash" allowfullscreen="'.$allowFullScreen.'" allowscriptaccess="'.$allowScriptAccess.'" width="'.$width.'" height="'.$height.'"></object>';
 }
 add_shortcode("youtube", "youtube");
 
@@ -363,7 +363,7 @@ function my_formatter($content) {
 	$pattern_full = '{(\[raw\].*?\[/raw\])}is';
 	$pattern_contents = '{\[raw\](.*?)\[/raw\]}is';
 	$pieces = preg_split($pattern_full, $content, -1, PREG_SPLIT_DELIM_CAPTURE);
-
+<div></div>
 	foreach ($pieces as $piece) {
 		if (preg_match($pattern_contents, $piece, $matches)) {
 			$new_content .= $matches[1];
@@ -371,13 +371,13 @@ function my_formatter($content) {
 			$new_content .= wptexturize(wpautop($piece));
 		}
 	}
-
+<div></div>
 	return $new_content;
 }
-
+<div></div>
 remove_filter('the_content', 'wpautop');
 remove_filter('the_content', 'wptexturize');
-
+<div></div>
 add_filter('the_content', 'my_formatter', 99);
 
 ```
@@ -394,11 +394,11 @@ function related_posts_shortcode( $atts ) {
 	extract(shortcode_atts(array(
 	    'limit' => '5',
 	), $atts));
-
+<div></div>
 	global $wpdb, $post, $table_prefix;
-
+<div></div>
 	if ($post->ID) {
-		$retval = '';
+		$retval = '<ul>';
  		// Get tags
 		$tags = wp_get_post_tags($post->ID);
 		$tagsarray = array();
@@ -406,7 +406,7 @@ function related_posts_shortcode( $atts ) {
 			$tagsarray[] = $tag->term_id;
 		}
 		$tagslist = implode(',', $tagsarray);
-
+<div></div>
 		// Do the query
 		$q = "SELECT p.*, count(tr.object_id) as count
 			FROM $wpdb->term_taxonomy AS tt, $wpdb->term_relationships AS tr, $wpdb->posts AS p WHERE tt.taxonomy ='post_tag' AND tt.term_taxonomy_id = tr.term_taxonomy_id AND tr.object_id  = p.ID AND tt.term_id IN ($tagslist) AND p.ID != $post->ID
@@ -415,17 +415,17 @@ function related_posts_shortcode( $atts ) {
  			GROUP BY tr.object_id
 			ORDER BY count DESC, p.post_date_gmt DESC
 			LIMIT $limit;";
-
+<div></div>
 		$related = $wpdb->get_results($q);
  		if ( $related ) {
 			foreach($related as $r) {
-				$retval .= ''.wptexturize($r->post_title).'';
+				$retval .= '<li><a title="'.wptexturize($r->post_title).'" href="'.get_permalink($r->ID).'">'.wptexturize($r->post_title).'</a></li>';
 			}
 		} else {
 			$retval .= '
-	No related posts found';
+	<li>No related posts found</li>';
 		}
-		$retval .= '';
+		$retval .= '</ul>';
 		return $retval;
 	}
 	return;
@@ -449,25 +449,25 @@ function add_sc_select(){
      /* enter names of shortcode to exclude bellow */
      /* ------------------------------------- */
     $exclude = array("wp_caption", "embed");
-    echo ' Shortcode';
+    echo '&nbsp;<select id="sc_select"><option>Shortcode</option>';
     foreach ($shortcode_tags as $key => $val){
         if(!in_array($key,$exclude)){
-            $shortcodes_list .= ''.$key.'';
+            $shortcodes_list .= '<option value="['.$key.'][/'.$key.']">'.$key.'</option>';
             }
         }
      echo $shortcodes_list;
-     echo '';
+     echo '</select>';
 }
 add_action('admin_head', 'button_js');
 function button_js() {
-    echo '
+    echo '<script type="text/javascript">
     jQuery(document).ready(function(){
        jQuery("#sc_select").change(function() {
               send_to_editor(jQuery("#sc_select :selected").val());
                   return false;
         });
     });
-    ';
+    </script>';
 }
 
 ```

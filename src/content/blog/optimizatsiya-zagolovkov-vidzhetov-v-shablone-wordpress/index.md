@@ -24,10 +24,10 @@ series: ""
 
 register_sidebar(array(
 	'name'=>'Left Sidebar',
-	'before_widget' => '',
-	'after_widget' => '',
-	'before_title' => '',
-	'after_title' => '',
+	'before_widget' => '<div id="%1$s" class="widget %2$s">',
+	'after_widget' => '</div>',
+	'before_title' => '<h3 class="widget-title">',
+	'after_title' => '</h3>',
 ));
 
 ```
@@ -40,10 +40,10 @@ register_sidebar(array(
 
 register_sidebar(array(
 	'name'=>'Left Sidebar',
-	'before_widget' => '',
-	'after_widget' => '',
-	'before_title' => '',
-	'after_title' => '',
+	'before_widget' => '<div id="%1$s" class="widget %2$s">',
+	'after_widget' => '</div>',
+	'before_title' => '<div class="widget-title"><p>',
+	'after_title' => '</p></div>',
 ));
 
 ```

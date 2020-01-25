@@ -59,13 +59,13 @@ h1,h2,h3,h4,h5,h6
 	font-weight: 700;
 	color: #1b252a;
 }
-
+<div></div>
 h1 a, h2 a, h4 a, h5 a, h6 a
 {
 	text-decoration: none;
 	color: inherit;
 }
-
+<div></div>
 .page-title 
 {
         font-size: 3.5em;
@@ -113,7 +113,8 @@ endif;
 А потом по месяцам и по дням:
 
 ```php{7-11}
- <h1 class="page-title">
+
+<h1 class="page-title">
    <?php
 if (is_category()):
     single_cat_title();

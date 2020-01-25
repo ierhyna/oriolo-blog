@@ -71,7 +71,7 @@ series: "create-wp-theme-from-html"
 После добавления wp\_head, нам больше не нужны другие мета-теги, кроме тега определения кодировки, поэтому если они есть, удалим их:
 
 ```php
- <meta name="description" content="" />
+      <meta name="description" content="" />
       <meta name="keywords" content="" />
 ```
 

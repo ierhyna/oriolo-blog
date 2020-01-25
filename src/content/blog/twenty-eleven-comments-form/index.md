@@ -32,7 +32,7 @@ series: ""
 
 Сначала найдем и удалим ненужный код:
 
-```
+```css
 
 #respond p {
 	margin: 10px 0;
@@ -41,7 +41,7 @@ series: ""
 
 Теперь удалим отступы, добавив `margin: 0` для полей ввода. Установим ширину поля в 85% от ширины тега p, в котором оно находится. При необходимости, поменяйте высоту input'а.
 
-```
+```css
 
 #respond input[type=text] {
 	display: block;
@@ -53,7 +53,7 @@ series: ""
 
 Изменим ширину полей input до 30%, добавим следующий код после 2187 строки:
 
-```
+```css
 
 p.comment-form-author,
 p.comment-form-email,
@@ -73,7 +73,8 @@ p.comment-form-url {
 
 В файле comments.php найдите функцию `comment_form`, о которой я говорила в начале статьи. Замените ее на следующее:
 
-```
+```php
 
-'
+<!--?php comment_form (array (
+'comment_field'=-->'<div style="clear:both"></div>
 ```

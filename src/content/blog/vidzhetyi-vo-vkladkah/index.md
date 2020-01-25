@@ -47,12 +47,12 @@ function sp_widget_execute_php($text) {
 ```php
 (function($) {
 $(function() {
-
+<div></div>
   $('ul.tabs').delegate('li:not(.current)', 'click', function() {
     $(this).addClass('current').siblings().removeClass('current')
       .parents('div.section').find('div.box').eq($(this).index()).fadeIn(150).siblings('div.box').hide();
   })
-
+<div></div>
 })
 })(jQuery)
 ```
@@ -125,7 +125,8 @@ float: left;
 padding: 0 11px 0 0;
 height: 27px;
 color: #777;
-} 
+}
+
 ```
 
 ## Шаг 4. Добавление виджетов во вкладки

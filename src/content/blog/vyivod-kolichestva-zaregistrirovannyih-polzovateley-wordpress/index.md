@@ -15,7 +15,10 @@ series: ""
 Фактически, это делается очень просто. В нужном месте файла темы необходимо вставить такой код:
 
 ```
-get_var("select count(*) from $wpdb->users");
+<!--?php
+function get_reg_users() {
+  global $wpdb;
+  return $wpdb--->get_var("select count(*) from $wpdb->users");
 }
 print("Число зарегистрированных участников: ".get_reg_users());
 ?>

@@ -39,13 +39,14 @@ series: ""
 Сейчас давайте немного изменим файл hearder.php. Найдите, где подключается файл стилей (обычно это первые несколько строк кода):
 
 ```html
-
+<link rel="stylesheet" media="screen" href="<?php bloginfo( 'template_url' ); ?>/style.css">
 ```
 
 и замените ее на следующее:
 
 ```html
-  
+<link rel="stylesheet" type="text/css" media="screen and (min-width: 641px)" href="<?php bloginfo( 'stylesheet_url' ); ?>">
+<link rel="stylesheet" media="screen and (max-width: 641px)" href="<?php bloginfo( 'template_url' ); ?>/style-mob.css">
 ```
 
 Мы разделили все экраны пользователей на две группы: те, которые больше 640 px, и те, которые меньше. Если экран больше 640 px, то будет загружаться обычный файл стилей style.css, а если меньше, то style-mob.css.
@@ -59,7 +60,8 @@ series: ""
 Есть второй способ. Можно задать значение `media="handheld"` для пути к "мобильному" стилю, и там прописать путь к файлу стиля для телефона:
 
 ```html
-  
+<link rel="stylesheet" type="text/css" media="screen" href="<?php bloginfo( 'stylesheet_url' ); ?>">
+<link rel="stylesheet" media="handheld" href="<?php bloginfo( 'template_url' ); ?>/style-mob.css">
 ```
 
 В этом случае, если просмотр совершается с компьютера, грузится обычный стиль, а если с телефона, то style-mob.css. Я не проверяла, как это будет работать.

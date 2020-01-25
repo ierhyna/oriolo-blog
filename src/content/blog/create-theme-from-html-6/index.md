@@ -73,7 +73,7 @@ series: "create-wp-theme-from-html"
 /* 
 * Pagination
 */
-
+<div></div>
 // $range - сколько страниц выводить до и после текущей страницы, я поставила 3
 function oriolo_pagination($pages = '', $range = 3)
 {
@@ -83,16 +83,16 @@ function oriolo_pagination($pages = '', $range = 3)
      if($pages == '')
      {
          global $wp_query;
-
+<div></div>
          // $pages - это общее число страницы, запомним это, дальше оно нам понадобится
          $pages = $wp_query->max_num_pages;
-
+<div></div>
          if(!$pages)
          {
              $pages = 1;
          }
      }
-
+<div></div>
      // здесь начинается вывод навигации
      if(1 != $pages)
      { 
@@ -106,10 +106,10 @@ function oriolo_pagination($pages = '', $range = 3)
          
          // добавлена строка с <div class='pages'> - внутри него будут кнопки со страницами
          echo "<div class='pages'>";
-
+<div></div>
          // кнопка первой страницы
          if($paged > 2 && $paged > $range+1 && $showitems < $pages) echo "<a href='".get_pagenum_link(1)."'>1</a>";
-
+<div></div>
          // вывод всех остальных страниц
          for ($i=1; $i <= $pages; $i++)
          {
@@ -123,7 +123,7 @@ function oriolo_pagination($pages = '', $range = 3)
          // перед выводом кнопки с последней страницей добавлен <span> с многоточием
          // текстом ссылки будет общее количество страниц: $pages
          if ($paged < $pages-1 &&  $paged+$range-1 < $pages && $showitems < $pages) echo "<span>…</span><a href='".get_pagenum_link($pages)."'> $pages </a>";
-
+<div></div>
          // закроем div со страницами
          echo "</div>";
          

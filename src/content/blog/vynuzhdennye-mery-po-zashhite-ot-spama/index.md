@@ -41,7 +41,7 @@ function get_the_user_ip() {
     }
     return apply_filters( 'dm_get_ip', $ip );
 }
-
+<div></div>
 function preprocess_new_comment($commentdata) {
     $userIdesntity = md5( get_the_user_ip().time() );
     if( !isset( $_POST['is_valid_comment'] ) && trim( $_POST['is_valid_comment'] )== $userIdesntity ) {
@@ -49,13 +49,13 @@ function preprocess_new_comment($commentdata) {
     }
     return $commentdata;
 }
-
+<div></div>
 if( function_exists( 'add_action' ) ) {
     add_action( 'preprocess_comment', 'preprocess_new_comment' );
     add_action( 'comment_form_after', 'comment_spam_prevention', 20 );
     
 }
-
+<div></div>
 function comment_spam_prevention(){
     $userIdesntity = md5(get_the_user_ip().time());
     ?>
@@ -76,6 +76,7 @@ function comment_spam_prevention(){
     
     <?php
 }
+<div></div>
 
 //------------------------------------------------------------------------------------------------
 //      EOF Spam Comments Checker

@@ -13,11 +13,13 @@ series: ""
 На самом деле, **поле ввода сайта в форме комментария удалить** достаточно просто. Для этого необходимо добавить такой код в файл functions.php:
 
 ```
- function remove_url_from_comments($fields) {
+
+function remove_url_from_comments($fields) {
     unset($fields['url']);
     return $fields;
 }
-add_filter('comment_form_default_fields', 'remove_url_from_comments'); 
+add_filter('comment_form_default_fields', 'remove_url_from_comments');
+
 ```
 
 Все! После этого в форме комментирования поля для сайта не будет. Кстати, если вы хотите удалить другие поля, то это можно сделать аналогичным образом. Сначала смотрим [стандартные значения полей формы комментирования](http://oriolo.ru/wordpress/nastroyka-formyi-kommentariev-v-wordpress-3-0/ "Настройка формы комментариев в WordPress 3.0+"), а потом подставляем нужное значение в функцию.
