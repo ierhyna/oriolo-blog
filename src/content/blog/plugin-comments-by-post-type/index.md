@@ -50,6 +50,6 @@ series: ""
 
 На мой взгляд, использование плагина **Comments by Post Type** существенно улучшает систему работы с комментариям для администратора сайта. Буду рада, если кому-то еще он окажется полезным.
 
-\[info\]Взять плагин можно в официальном репозитории плагинов WordPress [здесь](https://wordpress.org/plugins/comments-by-post-type/). Исходный код размещен [у меня на GitHub](https://github.com/ierhyna/comments-by-post-type/).\[/info\]
+Взять плагин можно в официальном репозитории плагинов WordPress [здесь](https://wordpress.org/plugins/comments-by-post-type/). Исходный код размещен [у меня на GitHub](https://github.com/ierhyna/comments-by-post-type/).
 
 Мнения, комментарии и багрепорты, как обычно, приветствуются.
