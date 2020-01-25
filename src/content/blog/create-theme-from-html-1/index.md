@@ -59,7 +59,7 @@ series: "create-wp-theme-from-html"
 
 Сейчас откройте index.html. Если удалить оттуда все "лишнее", для простоты понимания, структуры, то получится примерно следующее:
 
-```
+```php
 <!DOCTYPE html>
 <html>
     <head>
@@ -102,7 +102,7 @@ series: "create-wp-theme-from-html"
 
 В style.css добавим строки, которые помогут системе узнать, что это за тема:
 
-```
+```php
 /*
 Theme Name: My Studing Theme
 Theme URI: http://oriolo.ru
@@ -113,8 +113,7 @@ Version: 1.0
 License: CCA 3.0 license
 License URI: http://creativecommons.org/licenses/by/3.0/
 Tags: white, blue, left-sidebar, right-sidebar
-*/
-
+*/ 
 ```
 
 Вместо Author и Author URI можете написать свое имя и сайт, а вместо Theme Name - название темы.
@@ -125,7 +124,7 @@ Tags: white, blue, left-sidebar, right-sidebar
 
 Вставьте все до тега <main class="col-md-9"> не включительно в header.php. Это та часть, которая будет повторяться на каждой странице вверху, до записи или страницы:
 
-```
+```php
 <!DOCTYPE html>
 <html>
   <head>
@@ -163,8 +162,8 @@ Tags: white, blue, left-sidebar, right-sidebar
 
 Затем основное содержимое вставим в файл index.php:
 
-```
-    <!-- main and sidebar -->
+```php
+ <!-- main and sidebar -->
     <main class="col-md-9">
       <article class="post">
         <header>
@@ -209,14 +208,13 @@ Tags: white, blue, left-sidebar, right-sidebar
           </li>
         </ul>
       </nav>
-    </main>
-
+    </main> 
 ```
 
 Далее сделаем сайдбар sidebar.php:
 
-```
-    <aside class="sidebar col-md-3">
+```php
+ <aside class="sidebar col-md-3">
       <div class="widget">
         <div class="input-group">
           <input type="text" class="form-control" placeholder="Search for...">
@@ -319,8 +317,8 @@ Tags: white, blue, left-sidebar, right-sidebar
 
 И подвал footer.php
 
-```
-  <footer class="row">
+```php
+ <footer class="row">
     <p class="col-md-12">&copy; Irina Sokolovskaya</p>
   </footer>
   </div>
@@ -333,13 +331,13 @@ Tags: white, blue, left-sidebar, right-sidebar
 
 После этого, еще немного поработаем над файлом index.php. Как я уже говорила, это самый главный файл вашей темы. Именно в этот файл мы добавим функции для вывода на странице шапки, сайдбара и подвала. В самое начало файла вставьте функцию для вывода header.php:
 
-```
+```php
 <?php get_header(); ?>
 ```
 
 И в самый конец - функции для вывода сайдбара и подвала:
 
-```
+```php
 <?php get_sidebar(); ?>
 <?php get_footer(); ?>
 ```
@@ -348,8 +346,8 @@ Tags: white, blue, left-sidebar, right-sidebar
 
 Также нужно внести некоторые изменения в **header.php**. Давайте пропишем через **echo get\_template\_directory\_uri()** путь ко всем используемым скриптам и стилям:
 
-```
-    <!-- <link rel='stylesheet' href='//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css'> -->
+```php
+ <!-- <link rel='stylesheet' href='//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css'> -->
     <link rel='stylesheet' href='<?php echo get_template_directory_uri(); ?>/css/bootstrap.min.css'>
     <link rel='stylesheet' href='<?php echo get_template_directory_uri(); ?>/css/main.css'>
 ```

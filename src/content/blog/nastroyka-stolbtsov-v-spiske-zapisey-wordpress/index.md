@@ -20,7 +20,7 @@ series: ""
 
 В таком случае, можно удалить столбец, при помощи специального кода, который необходимо вставить в конец файла functions.php вашей темы:
 
-```
+```php
 // Вывод колонок в списке записей
 function remove_post_columns($posts_columns) {
 	$posts_columns = array(
@@ -32,6 +32,9 @@ function remove_post_columns($posts_columns) {
 		"date" => "Дата",
 		"comments" => '
 		
+
+![Comments](' . esc_url( admin_url( 'images/comment-grey-bubble.png' ) ) . ')
+
 		',
 	);
 	return $posts_columns;

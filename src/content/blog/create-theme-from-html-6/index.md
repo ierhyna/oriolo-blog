@@ -16,7 +16,7 @@ series: "create-wp-theme-from-html"
 
 Сначала нужно посмотреть, какие теги и классы используются для вывода страниц в верстке. Открываем наш файл index.php, и в самом низу видим:
 
-```
+```html
 <!-- Pager -->
 <div class="pager">
 	<!--<a href="#" class="button previous">Previous Page</a>-->
@@ -38,7 +38,7 @@ series: "create-wp-theme-from-html"
 
 Посмотрим, какой HTML сейчас генерирует функция:
 
-```
+```html
 <div class='clearfix navigation-top'>
   <div class='pagination'>
     <span>
@@ -69,7 +69,7 @@ series: "create-wp-theme-from-html"
 
 В комментариях я написала, какие значения были изменены:
 
-```
+```php
 /* 
 * Pagination
 */

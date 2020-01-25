@@ -52,20 +52,19 @@ series: ""
 
 Вроде бы все нашлось. Теперь можно установить плагины и настроить таск для сборщика Gulp. Я начну с установки плагинов, которые позволят использовать привычный синтаксис, а потом добавлю остальное.
 
-```
-npm i -D gulp gulp-postcss gulp-sourcemaps autoprefixer postcss-partial-import postcss-simple-vars postcss-nested postcss-mixins
-
+```sh
+npm i -D gulp gulp-postcss gulp-sourcemaps autoprefixer postcss-partial-import postcss-simple-vars postcss-nested postcss-mixins 
 ```
 
 Потестировала, все работает. Значит, можно добавить CSSNano для минификации.
 
-```
+```sh
 npm i -D gulp-cssnano
 ```
 
 В итоге, таск у меня получился такой:
 
-```
+```php
 'use strict';
 
 const gulp = require('gulp');
@@ -87,19 +86,18 @@ gulp.task('css', function () {
     .pipe(nano())
     .pipe( sourcemaps.write('.') )
     .pipe( gulp.dest('build/') );
-});
-
+}); 
 ```
 
 Теперь надо добавить линтер и инструмент для форматирования кода. Я хочу, чтобы ошибки в стилях выводились в консоли и в редакторе, поэтому надо установить [плагин Stylelint для Атома](https://atom.io/packages/linter-stylelint), настроить таск для Gulp, и создать файл конфига .stylelintrc. Устанавливается все просто.
 
-```
+```sh
 npm i -D gulp-stylelint && apm install linter-stylelint
 ```
 
 А вот с конфигом придется помучиться. Все возможные правила перечислены [тут](http://stylelint.io/user-guide/rules/), но создавать их придется вручную. Я для начала установила [stylelint-config-standard](https://github.com/stylelint/stylelint-config-standard), `npm install -D stylelint-config-standard` и прописала в файле .stylelintrc его использование:
 
-```
+```php
 {
   "extends": "/absolute/path/to/stylelint-config-standard"
 }
@@ -109,9 +107,8 @@ npm i -D gulp-stylelint && apm install linter-stylelint
 
 Таск для линтера стилей получился такой:
 
-```
-
-gulp.task('lint-css', function () {
+```php
+ gulp.task('lint-css', function () {
   const stylelint = require('gulp-stylelint');
 
   return gulp.src('src/**/*.css')
@@ -122,25 +119,24 @@ gulp.task('lint-css', function () {
         console: true
       }]
     }));
-});
-
+}); 
 ```
 
 Добавим инструмент для форматирования кода. Тут, на самом деле, я не до конца разобралась, может ли плагин для Атома работать без установленного npm-пакета.
 
-```
+```sh
 npm install -D stylefmt && apm install stylefmt
 ```
 
 Вроде бы, все работает. Для удобства, вот в виде отдельной команды все пакеты, которые я поставила:
 
-```
+```sh
 npm i -D gulp gulp-postcss gulp-sourcemaps autoprefixer postcss-partial-import postcss-simple-vars postcss-nested postcss-mixins gulp-cssnano gulp-stylelint stylefmt
 ```
 
 И плагины для Атома:
 
-```
+```sh
 apm install linter-stylelint stylefmt
 ```
 

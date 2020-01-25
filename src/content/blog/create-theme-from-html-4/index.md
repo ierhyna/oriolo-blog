@@ -30,7 +30,7 @@ series: "create-wp-theme-from-html"
 
 Для того, чтобы добавить к теме поддержку миниатюр, необходимо будет внести изменения в файл functions.php. Поэтому сначала создадим этот файл, а затем добавим в него функцию для поддержки миниатюр:
 
-```
+```php
 <?php
 if ( function_exists( 'add_theme_support' ) ) { 
 	add_theme_support( 'post-thumbnails' ); 
@@ -42,7 +42,7 @@ if ( function_exists( 'add_theme_support' ) ) {
 
 Если вы хотите изменить размер миниатюр, то функцию нужно дополнить еще одной строкой:
 
-```
+```php
 <?php
 if ( function_exists( 'add_theme_support' ) ) { 
 	add_theme_support( 'post-thumbnails' ); 
@@ -59,13 +59,13 @@ if ( function_exists( 'add_theme_support' ) ) {
 
 Сначала, давайте заменим вывод картинки-заглушки на код вывода миниатюр. Для этого в файле index.php, найдите строку
 
-```
+```php
 <img class="thumbnail" src="http://placehold.it/650x250">
 ```
 
 и замените ее на функцию, которая будет выводить миниатюры:
 
-```
+```php
 <?php if ( has_post_thumbnail() ) {
 	the_post_thumbnail( 'full-thumbnail', array( 'class' => 'thumbnail' ) );
 }  ?>
@@ -77,7 +77,7 @@ if ( function_exists( 'add_theme_support' ) ) {
 
 Еще немного дополним наш код, и сделаем так, чтобы миниатюра записи была ссылкой на саму запись:
 
-```
+```php
 <a href="<?php the_permalink(); ?>">
 <?php the_post_thumbnail( 'full-thumbnail', array( 'class' => 'thumbnail' ) ); ?>
 </a>

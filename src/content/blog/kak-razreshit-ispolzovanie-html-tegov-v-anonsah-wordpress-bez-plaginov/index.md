@@ -29,14 +29,14 @@ series: ""
 
 Чтобы использовать в анонсах теги, в файле functions.php нужно добавить строки
 
-```
+```php
 add_filter( 'the_excerpt', 'shortcode_unautop');
 add_filter( 'the_excerpt', 'do_shortcode');
 ```
 
 а чтобы не обрезались слова, изменить вот этот параметр:
 
-```
+```php
 function twentyten_excerpt_length( $length ) {
 return 80; // здесь надо задать необходимое количество слов
 }

@@ -20,7 +20,7 @@ series: ""
 
 Теперь осталось заменить тег `h3` на `p` в файле functions.php вашего шаблона. Находим там вот такой код:
 
-```
+```php
 
 register_sidebar(array(
 	'name'=>'Left Sidebar',
@@ -36,7 +36,7 @@ register_sidebar(array(
 
 В итоге, у меня получилось следующее:
 
-```
+```php
 
 register_sidebar(array(
 	'name'=>'Left Sidebar',

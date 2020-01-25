@@ -48,7 +48,7 @@ series: ""
 
 Поэтому, если вы хотите использовать этот шаблон, то для удобства посетителей можно **удалить префикс category со страниц рубрик**. Сделать это можно с помощью плагина [WP No Category Base](http://wordpress.org/extend/plugins/wp-no-category-base/) или следующего кода, который надо вставить в конце файла functions.php:
 
-```
+```php
 add_filter('user_trailingslashit', 'remcat_function');
 function remcat_function($link) {
     return str_replace("/category/", "/", $link);

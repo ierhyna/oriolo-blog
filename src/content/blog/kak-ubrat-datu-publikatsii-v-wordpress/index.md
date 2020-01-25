@@ -18,7 +18,7 @@ series: ""
 
 В большинстве старых шаблонов для того, чтобы убрать дату поста, достаточно удалить `the_time()`. Например, вы нашли вот такие строки, содержащие эту функцию, в файле index.php:
 
-```
+```php
 <p>Posted: <?php the_time('F j, Y'); ?> at <?php the_time('g:i a'); ?></p>
 ```
 
@@ -36,13 +36,11 @@ series: ""
 
 Например, в моем шаблоне вывод мета-данных поста осуществляется так:
 
-```
+```php
 function oriolo_posted_on() {
-	echo ' ';
+	echo '![]('. get_bloginfo() ';
 	printf( __( '%4$s
-	 by  
-	%7$s
-	 ', 'oriolo' ),
+	 by [%7$s](%5$s "%6$s")  ', 'oriolo' ),
 		esc_url( get_permalink() ),
 		esc_attr( get_the_time() ),
 		esc_attr( get_the_date( 'c' ) ),
@@ -56,11 +54,9 @@ function oriolo_posted_on() {
 
 Если вы нашли в файле функций своей темы подобный код, то этом случае, чтобы **убрать дату публикации**, надо отредактировать функицю, убрав из нее все, что связано с датой. То есть, привести код к таком виду:
 
-```
+```php
 function oriolo_posted_on() {
-	printf( __( ' by  
-	%7$s
-	 ', 'oriolo' ),
+	printf( __( ' by [%7$s](%5$s "%6$s")  ', 'oriolo' ),
 		esc_url( get_permalink() ),
 		esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ),
 		esc_attr( sprintf( __( 'View all posts by %s', 'oriolo' ), get_the_author() ) ),

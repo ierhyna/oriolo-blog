@@ -56,19 +56,19 @@ series: ""
 
 В появившемся поле по очериди выполняем следующие запросы. Вместо oldsite.ru подставьте название вашего старого домена, а вместо newsite.ru - название нового домена.
 
-```
+```mysql
 UPDATE wp_options SET option_value = replace(option_value, 'http://oldsite.ru', 'http://newsite.ru') WHERE option_name = 'home' OR option_name = 'siteurl';
 ```
 
 Второй запрос:
 
-```
+```mysql
 UPDATE wp_posts SET guid = replace(guid, 'http://oldsite.ru','http://newsite.ru');
 ```
 
 Третий запрос:
 
-```
+```mysql
 UPDATE wp_posts SET post_content = replace(post_content, 'http://oldsite.ru', 'http://newsite.ru');
 ```
 

@@ -19,7 +19,7 @@ series: ""
 
 Если вы выбрали второй способ, то тогда нужно будет подключить этот файл к стилям вашей темы. Добавьте в файл style.css темы этот код:
 
-```
+```css
 @import url(style-googs-catalog.css);
 ```
 
@@ -41,7 +41,7 @@ style-googs-catalog.css нужно заменить на название фай
 
 Вот код, который нужно вставить в goods-custom.php для создания шаблона отдельной рубрики:
 
-```
+```php{2,3,5,6,7}
 // Применяем собственный шаблон для рубрики товаров с ID = 26
 add_filter('taxonomy_template', 'goods_category_26_template');
 function goods_category_26_template($taxonomy) {
@@ -58,7 +58,7 @@ function goods_category_26_template($taxonomy) {
 
 Затем импортируем goods-custom.php в goods-cat.php. В последнем файле, в самом низу добавьте:
 
-```
+```php
 include ( plugin_dir_path(__FILE__) . 'goods-custom.php' );
 ```
 
